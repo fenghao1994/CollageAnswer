@@ -11,10 +11,6 @@
         <activity
             android:name=".activity.HomeActivity_"
             android:label="@string/title_activity_home" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -25,8 +21,26 @@
         <activity
             android:name=".activity.LoginActivity_"
             android:label="@string/title_activity_home" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activity.SignUpActivity_"
+            android:label="@string/title_activity_home" >
+        </activity>
+
+        <activity
+            android:name=".activity.SearchQuestionActivity_"
+            android:label="@string/title_activity_home" >
+        </activity>
+
+        <activity
+            android:name=".activity.AddQuestionActivity_"
+            android:label="@string/title_activity_home" >
+        </activity>
     </application>
 
 </manifest>

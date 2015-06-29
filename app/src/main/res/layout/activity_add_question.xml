@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        class="club.cqut.collageanswer.customview.HeadBackView_"
+        android:id="@+id/view_head" />
+
+    <EditText
+        android:id="@+id/question_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="标题"
+        />
+
+    <EditText
+        android:id="@+id/question_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:inputType="textMultiLine"
+        android:hint="内容"
+        android:gravity="top|left"
+         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+    <Button
+        android:id="@+id/btn_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="标签"
+        android:textSize="20sp"
+        android:layout_weight="1"
+        />
+    <Button
+        android:id="@+id/btn_commit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交"
+        android:textSize="20sp"
+        android:layout_weight="1"
+        />
+    </LinearLayout>
+
+</LinearLayout>

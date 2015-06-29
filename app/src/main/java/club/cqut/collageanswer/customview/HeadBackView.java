@@ -69,11 +69,17 @@ public class HeadBackView extends RelativeLayout {
     }
 
     /**
-     * 隐藏左侧按钮
+     * 隐藏右侧按钮
      */
     public void hideRightButton(){
         rightButton.setVisibility(View.GONE);
         rightButtonShowFlag = false;
+    }
+    /**
+     * 隐藏左侧按钮
+     */
+    public void hineLeftButton(){
+        leftButton.setVisibility(View.GONE);
     }
 
     /**

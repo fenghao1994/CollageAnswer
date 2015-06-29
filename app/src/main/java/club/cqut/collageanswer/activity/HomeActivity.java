@@ -1,5 +1,6 @@
 package club.cqut.collageanswer.activity;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -24,12 +25,10 @@ import club.cqut.collageanswer.fragment.RecommendFragment_;
 
 @EActivity(R.layout.activity_home)
 public class HomeActivity extends FragmentActivity implements View.OnClickListener{
-
     private QuestionFragment_ questionFragment;
     private RecommendFragment_ recommendFragment;
     private RankFragment_ rankFragment;
     private MineFragment_ mineFragment;
-
     @ViewById
     protected LinearLayout layout_question;
     @ViewById
@@ -38,35 +37,29 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
     protected LinearLayout layout_rank;
     @ViewById
     protected LinearLayout layout_mine;
-
     @ViewById
     protected LinearLayout layout_search;
-
     @ViewById
     protected TextView activity_title;
     @ViewById
     protected LinearLayout layout_title;
+    @ViewById
+    protected LinearLayout add_question;
 
     @AfterViews
     public void init(){
-
         layout_question.setOnClickListener(this);
         layout_recommend.setOnClickListener(this);
         layout_rank.setOnClickListener(this);
         layout_mine.setOnClickListener(this);
         layout_search.setOnClickListener(this);
         activity_title.setOnClickListener(this);
-
-
+        add_question.setOnClickListener(this);
         chioceFragment(0);
     }
-
-
-
     public void chioceFragment(int index){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        reset();
         hineFragment(fragmentTransaction);
 
         switch(index ){
@@ -106,13 +99,7 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
         fragmentTransaction.commit();
     }
 
-    /**
-     * 重置选项
-     * 将所有的都置为默认
-     */
-    public void reset(){
 
-    }
 
     public void hineFragment(FragmentTransaction fragmentTransaction){
         if(questionFragment != null){
@@ -143,6 +130,10 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
                 layout_title.setVisibility(View.VISIBLE);
                 activity_title.setText("推荐");
                 break;
+            case R.id.add_question:
+                Intent intent = new Intent(this, AddQuestionActivity_.class);
+                startActivity(intent);
+                ;break;
             case R.id.layout_rank:
                 chioceFragment(2);
                 layout_search.setVisibility(View.GONE);
@@ -156,7 +147,9 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
                 activity_title.setText("我的信息");
                 break;
             case R.id.layout_search:
-                Toast.makeText(getApplicationContext(), "123", Toast.LENGTH_LONG).show();
+                Intent t = new Intent();
+                t.setClass(this, SearchQuestionActivity_.class);
+                startActivity(t);
                 break;
             default:break;
         }
