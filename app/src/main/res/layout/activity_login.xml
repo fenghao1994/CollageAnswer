@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:weightSum="1">
+
+    <club.cqut.collageanswer.customview.HeadBackView_
+        android:id="@+id/view_head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </club.cqut.collageanswer.customview.HeadBackView_>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffffff"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp">
+
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="com.rengwuxian.materialedittext.MaterialEditText"
+            android:inputType="text"
+            android:id="@+id/editText_account"
+            style="@style/input"
+            app:met_hideUnderline="true"
+            app:met_floatingLabel="normal"
+            app:met_floatingLabelText="手机号/邮箱"
+            app:met_floatingLabelTextSize="14sp"
+            app:met_minBottomTextLines="1"
+            android:hint="手机号/邮箱"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:background="#ffffffff"
+        android:layout_marginTop="16dp">
+
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="com.rengwuxian.materialedittext.MaterialEditText"
+            android:inputType="textPassword"
+            android:id="@+id/editText_password"
+            style="@style/input"
+            app:met_hideUnderline="true"
+            app:met_floatingLabel="normal"
+            app:met_floatingLabelText="密码(位数不能小于8位)"
+            app:met_floatingLabelTextSize="14sp"
+            app:met_minBottomTextLines="1"
+            app:met_minCharacters="8"
+            app:met_autoValidate="true"
+            android:hint="密码(位数不能小于8位)"
+            android:singleLine="true" />
+    </LinearLayout>
+
+
+
+    <ImageView
+        android:id="@+id/imageView_login"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/button_login"
+        style="@style/userButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="15dp"
+        >
+        <TextView
+            android:id="@+id/sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注册"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:paddingLeft="30dp"
+            />
+        <TextView
+            android:id="@+id/try_look"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="先看看"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:paddingRight="30dp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

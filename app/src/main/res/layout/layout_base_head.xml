@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" style="@style/BaseHead"
+    android:layout_height="55dp">
+
+    <TextView
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textView_title"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        style="@style/BaseHeadTitle"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:gravity="center_horizontal" />
+
+
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="35dp"
+        android:id="@+id/imageView_right"
+        android:layout_marginRight="17dp"
+        android:maxHeight="20dp"
+        android:maxWidth="20dp"
+        android:adjustViewBounds="true"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="17dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingRight="25dp"
+        android:gravity="center_vertical"
+        android:id="@+id/view_left_zone">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="35dp"
+            android:id="@+id/imageView_left"
+            android:layout_marginLeft="10dp"
+            android:adjustViewBounds="true"
+            android:layout_marginStart="10dp" />
+
+    </LinearLayout>
+</RelativeLayout>

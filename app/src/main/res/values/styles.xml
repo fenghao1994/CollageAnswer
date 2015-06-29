@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="BaseHead">
+        <item name="android:background">#22B1D3</item>
+    </style>
+    <style name="BaseHeadTitle">
+        <item name="android:textSize">22dp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="input">
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:background">#FFFFFF</item>
+    </style>
+    <style name="userButton">
+        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:layout_marginRight">25dp</item>
+    </style>
+
+
+</resources>
