@@ -12,6 +12,32 @@
         class="club.cqut.collageanswer.customview.HeadBackView_"
         android:id="@+id/view_head" />
 
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffffff"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp">
+
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="com.rengwuxian.materialedittext.MaterialEditText"
+            android:inputType="text"
+            android:id="@+id/editText_username"
+            style="@style/input"
+            app:met_hideUnderline="true"
+            app:met_floatingLabel="normal"
+            app:met_floatingLabelText="昵称"
+            app:met_floatingLabelTextSize="14sp"
+            app:met_minBottomTextLines="1"
+            android:hint="昵称"
+            android:singleLine="true" />
+    </LinearLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

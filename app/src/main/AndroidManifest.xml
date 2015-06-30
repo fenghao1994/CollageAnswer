@@ -3,6 +3,7 @@
     package="club.cqut.collageanswer" >
 
     <uses-permission android:name="ANDROID.PERMISSION.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"

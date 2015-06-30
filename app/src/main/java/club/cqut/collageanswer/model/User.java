@@ -3,12 +3,16 @@ package club.cqut.collageanswer.model;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
+
 import java.util.Date;
 
 /**
  * 用户实体
  * Created by fenghao on 2015/6/28.
  */
+@JsonIgnoreProperties({"name", "created_at", "updated_at", "enable", "remark", "organization_id", "parent_id", "society_id"})
 @DatabaseTable(tableName = "users")
 public class User {
 
@@ -22,7 +26,7 @@ public class User {
     public static final String COLUMN_STU_NUM = "stu_num"; //学号
     public static final String COLUMN_USER_SIGN = "user_sign";//个性签名
     public static final String COLUMN_SEX = "sex";
-    public static final String COLUMN_BIRTH = "brith";
+    public static final String COLUMN_BIRTH = "birth";
     public static final String COLUMN_HOBBY = "hobby";//兴趣爱好
     public static final String COLUMN_HEAD_IMAGE = "head_image";
     public static final String COLUMN_SCHOOL_EMAIL = "school_email";
@@ -31,6 +35,8 @@ public class User {
     public static final String COLUMN_DEFAULT_ORG = "default_org";//默认组织身份
     public static final String COLUMN_MAJOR = "major";//专业
     public static final String COLUMN_SUB_COLLAGE = "sub_collage";//学院
+    public static final String COLUMN_TOKEN = "token";//登陆令牌
+
 
     @DatabaseField(id = true, columnName = COLUMN_ID)
     private int id;
@@ -42,34 +48,48 @@ public class User {
     private String password;
     @DatabaseField(columnName = COLUMN_USERNAME)
     private String username;
+    @JsonProperty("real_name")
     @DatabaseField(columnName = COLUMN_REALNAME)
     private String realname;
     @DatabaseField(columnName = COLUMN_PINGYIN)
+    @JsonProperty("pinyin")
     private String pingyin;
     @DatabaseField(columnName = COLUMN_STU_NUM)
+    @JsonProperty("stu_num")
     private String stuNum;
     @DatabaseField(columnName = COLUMN_USER_SIGN)
+    @JsonProperty("user_sign")
     private String userSign;
     @DatabaseField(columnName = COLUMN_SEX)
     private Boolean sex;
     @DatabaseField(columnName = COLUMN_BIRTH)
-    private Date brith;
+    private Date birth;
     @DatabaseField(columnName = COLUMN_HOBBY)
     private String hobby;
     @DatabaseField(columnName = COLUMN_HEAD_IMAGE)
+    @JsonProperty("head_image")
     private String headImage;
     @DatabaseField(columnName = COLUMN_SCHOOL_EMAIL)
+    @JsonProperty("school_image")
     private String schoolEmail;
     @DatabaseField(columnName = COLUMN_FELLOW)
+    @JsonProperty("fellow_id")
     private String fellow;
     @DatabaseField(columnName = COLUMN_CLASS)
+    @JsonProperty("clazz")
     private String classes;
     @DatabaseField(columnName = COLUMN_DEFAULT_ORG)
+    @JsonProperty("default_org")
     private String defaultOrg;
     @DatabaseField(columnName = COLUMN_MAJOR)
+    @JsonProperty("major_id")
     private String major;
     @DatabaseField(columnName = COLUMN_SUB_COLLAGE)
+    @JsonProperty("sub_college_id")
     private String subCollage;
+    @DatabaseField(columnName = COLUMN_TOKEN)
+    @JsonProperty("authentication_token")
+    private String token;
 
     public int getId() {
         return id;
@@ -151,12 +171,12 @@ public class User {
         this.sex = sex;
     }
 
-    public Date getBrith() {
-        return brith;
+    public Date getBirth() {
+        return birth;
     }
 
-    public void setBrith(Date brith) {
-        this.brith = brith;
+    public void setBirth(Date birth) {
+        this.birth = birth;
     }
 
     public String getHobby() {
@@ -221,5 +241,13 @@ public class User {
 
     public void setSubCollage(String subCollage) {
         this.subCollage = subCollage;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

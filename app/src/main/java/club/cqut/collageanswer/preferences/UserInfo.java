@@ -29,6 +29,11 @@ public interface UserInfo {
     String name();
 
     /**
+     * 用户邮箱
+     */
+    String email();
+
+    /**
      * 用户登录令牌
      * @return
      */

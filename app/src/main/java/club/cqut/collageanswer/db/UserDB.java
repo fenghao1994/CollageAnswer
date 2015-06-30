@@ -11,14 +11,13 @@ import java.util.List;
 import club.cqut.collageanswer.model.User;
 
 /**
- * �û�DB����
+ * userDB
  * Created by fenghao on 2015/6/28.
  */
 @EBean(scope= EBean.Scope.Singleton)
 public class UserDB {
     @OrmLiteDao(helper = DatabaseHelper.class, model = User.class)
     protected Dao<User, Integer> dao;
-
 
     /**
      * 获取用户的个人信息
@@ -36,5 +35,30 @@ public class UserDB {
             e.printStackTrace();
         }
         return null;
+    }
+
+
+    /**
+     * 保存用户信息
+     * @param user
+     */
+    public void saveUser(User user){
+        try {
+            dao.create(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 更新用户信息
+     */
+
+    public void updataUser(User user){
+        try {
+            dao.createOrUpdate(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
