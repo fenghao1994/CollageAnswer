@@ -8,10 +8,17 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
+
 import java.util.List;
 
 import club.cqut.collageanswer.R;
 import club.cqut.collageanswer.model.Question;
+import club.cqut.collageanswer.util.comp.AnimateFirstDisplayListener;
+import club.cqut.collageanswer.util.comp.InitImageLoader;
 
 
 /**
@@ -27,11 +34,16 @@ public class QuestionItemAdapter extends BaseAdapter{
         TextView questionTitle;
         TextView questionLabel;
     }
-
+    private Context context;
     private List<Question> list;
     private LayoutInflater inflater;
+    /*图片第一次加载时的监听*/
+    private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
+    /*初始化DisplayImageOptions*/
+    private DisplayImageOptions options = new InitImageLoader().getInitImageLoader();
 
     public QuestionItemAdapter(Context context, List<Question> list) {
+        this.context = context;
         this.list = list;
         this.inflater = LayoutInflater.from(context);
     }
@@ -51,7 +63,6 @@ public class QuestionItemAdapter extends BaseAdapter{
         return position;
     }
 
-    // TODO ImageLoader 加载图像
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -68,6 +79,10 @@ public class QuestionItemAdapter extends BaseAdapter{
         }else {
             holder = (ViewHolder) convertView.getTag();
         }
+        //imageLoader加载图像
+        ImageLoader imageLoader = ImageLoader.getInstance();
+        imageLoader.init(ImageLoaderConfiguration.createDefault(context));
+        imageLoader.displayImage(list.get(position).getHeadImage(), holder.headImage, options, animateFirstListener);
         return convertView;
     }
 }

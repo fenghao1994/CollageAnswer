@@ -14,27 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * viewpager切换
  * Created by fenghao on 2015/6/28.
  */
 
 public class MyFragmentPagerAdapter extends FragmentPagerAdapter{
-
-  /*  private ArrayList<Fragment> list;
-
-    public MyFragmentPagerAdapter(FragmentManager fm, ArrayList<Fragment> list) {
-        super(fm);
-        this.list = list;
-    }
-
-    @Override
-    public Fragment getItem(int position) {
-        return list.get(position);
-    }
-
-    @Override
-    public int getCount() {
-        return list.size();
-    }*/
 
 
     private final List<CharSequence> titles;
