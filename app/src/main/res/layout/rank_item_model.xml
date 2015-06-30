@@ -11,9 +11,10 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="horizontal"
+        android:padding="10dp"
         >
         
-        <ImageView
+        <club.cqut.collageanswer.RoungImage.CircleImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="20dp"

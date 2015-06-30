@@ -3,23 +3,29 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical">
 
-
-    <club.cqut.collageanswer.customview.HeadBackView_
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        ></club.cqut.collageanswer.customview.HeadBackView_>
-
     <!--我的页面-->
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
+        <club.cqut.collageanswer.RoungImage.CircleImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/cover"
-            android:paddingLeft="60dp"
+            android:layout_marginLeft="60dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:src="@mipmap/ic_launcher"/>
@@ -164,31 +170,7 @@
             />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:layout_marginTop="20dp">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="兴趣爱好"
-            android:paddingLeft="60dp"
-            android:textSize="20dp"
-            android:layout_weight="1"
-            />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="12312312312"
-            android:gravity="left"
-            android:paddingLeft="20dp"
-            android:textSize="20dp"
-            android:layout_weight="1"
-            />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -216,4 +198,58 @@
             />
     </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="协会"
+                    android:textSize="20dp"
+                    android:paddingLeft="60dp"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="计算机协会"
+                    android:gravity="left"
+                    android:paddingLeft="20dp"
+                    android:textSize="20dp"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="兴趣爱好"
+                    android:paddingLeft="60dp"
+                    android:textSize="20dp"
+                    android:layout_weight="1"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="12312312312"
+                    android:gravity="left"
+                    android:paddingLeft="20dp"
+                    android:textSize="20dp"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
