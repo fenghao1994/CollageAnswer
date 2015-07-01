@@ -15,4 +15,9 @@ public class HttpUrl {
     //登陆
     public static final String POST_LOGIN = ROOT + "/front/users/validate";
 
+    //获取最新问题
+    public static final String GET_NEW_QUESTION = ROOT + "/front/questions";
+
+    //获取最新问题
+    public static final String GET_HOT_QUESTION = ROOT + "/front/question_hottest";
 }

@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -24,7 +22,6 @@ import java.util.regex.Pattern;
 
 import club.cqut.collageanswer.R;
 import club.cqut.collageanswer.customview.HeadBackView;
-import club.cqut.collageanswer.util.comp.InitImageLoader;
 import club.cqut.collageanswer.util.http.BaseJsonHttpResponseHandler;
 import club.cqut.collageanswer.util.http.HttpClient;
 import club.cqut.collageanswer.util.http.HttpUrl;

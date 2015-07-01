@@ -1,6 +1,7 @@
 package club.cqut.collageanswer.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +12,12 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import club.cqut.collageanswer.R;
 import club.cqut.collageanswer.model.Question;
-import club.cqut.collageanswer.util.comp.AnimateFirstDisplayListener;
-import club.cqut.collageanswer.util.comp.InitImageLoader;
 
 
 /**
@@ -35,17 +34,45 @@ public class QuestionItemAdapter extends BaseAdapter{
         TextView questionLabel;
     }
     private Context context;
-    private List<Question> list;
+    public List<Question> list = new ArrayList<>();
     private LayoutInflater inflater;
-    /*图片第一次加载时的监听*/
-    private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
-    /*初始化DisplayImageOptions*/
-    private DisplayImageOptions options = new InitImageLoader().getInitImageLoader();
 
-    public QuestionItemAdapter(Context context, List<Question> list) {
+    // DisplayImageOptions的初始化
+    DisplayImageOptions options = new DisplayImageOptions.Builder()
+            .showImageOnLoading(R.mipmap.bootstrap_1)
+            .showImageOnFail(R.mipmap.ic_launcher)
+            .cacheInMemory(true)
+            .cacheOnDisk(true)
+            .bitmapConfig(Bitmap.Config.RGB_565)
+            .build();
+
+    public QuestionItemAdapter(Context context) {
         this.context = context;
-        this.list = list;
         this.inflater = LayoutInflater.from(context);
+    }
+
+    public List<Question> getList() {
+        return list;
+    }
+
+    public void setList(List<Question> list) {
+        this.list = list;
+    }
+
+    /**
+     * 得到最新数据往list里面添加
+     */
+    public void addNewQuestion(List<Question> questions){
+        list.clear();
+        list.addAll( questions);
+    }
+
+    /**
+     * 加载更多的时候往list的最后加数据
+     * @param questions
+     */
+    public void addOldQuestion(List<Question> questions){
+        list.addAll(list.size() - 1, questions);
     }
 
     @Override
@@ -84,9 +111,11 @@ public class QuestionItemAdapter extends BaseAdapter{
         holder.readNum.setText(list.get(position).getReadNum());
         holder.questionTitle.setText(list.get(position).getTitle());
         holder.questionLabel.setText(list.get(position).getLabel());
+
+
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(context));
-        imageLoader.displayImage(list.get(position).getHeadImage(), holder.headImage, options, animateFirstListener);
+        imageLoader.displayImage(list.get(position).getHeadImage(), holder.headImage, options);
         return convertView;
     }
 }

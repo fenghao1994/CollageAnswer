@@ -87,7 +87,7 @@ public class SearchQuestionActivity extends Activity implements OnClickListener{
         for(int i = 0 ; i < 10 ; i++){
             list.add(new Question());
         }
-        QuestionItemAdapter adapter = new QuestionItemAdapter(this, list);
+        QuestionItemAdapter adapter = new QuestionItemAdapter(this);
         initListView();
         listview.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
         listview.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
