@@ -44,6 +44,7 @@ public class BestNewQuestionFragment extends Fragment {
     public String type = REFRESH;
     public RequestParams params = null;
     public QuestionItemAdapter adapter = null;
+    public String page = "1";//当前的页数
     @AfterViews
     protected void init(){
         firstIn();
@@ -54,22 +55,17 @@ public class BestNewQuestionFragment extends Fragment {
             //下拉刷新
             @Override
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+                params = null;
                 type = REFRESH;
-                params = new RequestParams();
-                params.put("type", type);
                 refresh();
             }
 
             //上拉加载
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-                int id = -1;//列表中最后一项的id
-                List<Question> list = adapter.getList();
-                id = (list.get ( list.size() - 1)).getId();
                 type = LOADMORE;
                 params = new RequestParams();
-                params.put("type", type);
-                params.put("id", id);
+                params.put("page", Integer.parseInt(page) + 1);
                 refresh();
             }
         });
@@ -96,9 +92,8 @@ public class BestNewQuestionFragment extends Fragment {
      */
     public void firstIn(){
         //第一次进来的时候直接进行刷新
-        params = new RequestParams();
+        params = null;
         type = REFRESH;
-        params.put("type", type);
         refresh();
     }
 
@@ -111,18 +106,18 @@ public class BestNewQuestionFragment extends Fragment {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 Toast.makeText(getActivity(), "错误--" + statusCode, Toast.LENGTH_LONG).show();
-                Log.i("a", responseString);
             }
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 List<Question> questions = JacksonMapper.parseToList(responseString, new TypeReference<List<Question>>() {});
-
-                Log.w("h", headers.toString());
-
+                page = headers[8].getValue();
                 if (type == REFRESH) {
                     adapter.addNewQuestion(questions);
                 } else {
+                    if(questions.size() == 0){
+                        Toast.makeText(getActivity(), "没有更多数据！", Toast.LENGTH_LONG).show();
+                    }
                     adapter.addOldQuestion(questions);
                 }
                 adapter.notifyDataSetChanged();

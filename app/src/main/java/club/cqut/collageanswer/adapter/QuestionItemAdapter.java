@@ -72,7 +72,7 @@ public class QuestionItemAdapter extends BaseAdapter{
      * @param questions
      */
     public void addOldQuestion(List<Question> questions){
-        list.addAll(list.size() - 1, questions);
+        list.addAll(list.size(), questions);
     }
 
     @Override
@@ -110,7 +110,14 @@ public class QuestionItemAdapter extends BaseAdapter{
         holder.username.setText(list.get(position).getUserName());
         holder.readNum.setText(list.get(position).getReadNum());
         holder.questionTitle.setText(list.get(position).getTitle());
-        holder.questionLabel.setText(list.get(position).getLabel());
+
+        //处理标签
+        String[] split = list.get(position).getLabel().split(",");
+        String str = "";
+        for (int i = 0 ; i < split.length ; i++){
+            str += split[i] + "  ";
+        }
+        holder.questionLabel.setText(str);
 
 
         ImageLoader imageLoader = ImageLoader.getInstance();
