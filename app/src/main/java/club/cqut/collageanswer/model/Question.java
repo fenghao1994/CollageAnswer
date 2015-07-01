@@ -10,7 +10,7 @@ public class Question {
     private int userId; //提问者的id
     private int userName;//提问者的名字
     private String headImage; //提问者的头像
-    private int answerNum;//回答数
+//    private int answerNum;//回答数
     private String title;
     private String content;
     private String label; //问题标签 各个标签按逗号隔开
@@ -89,11 +89,11 @@ public class Question {
         this.headImage = headImage;
     }
 
-    public int getAnswerNum() {
-        return answerNum;
-    }
-
-    public void setAnswerNum(int answerNum) {
-        this.answerNum = answerNum;
-    }
+//    public int getAnswerNum() {
+//        return answerNum;
+//    }
+//
+//    public void setAnswerNum(int answerNum) {
+//        this.answerNum = answerNum;
+//    }
 }

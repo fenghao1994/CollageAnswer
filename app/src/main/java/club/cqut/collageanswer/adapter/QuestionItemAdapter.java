@@ -30,7 +30,7 @@ public class QuestionItemAdapter extends BaseAdapter{
     static class ViewHolder{
         ImageView headImage;
         TextView username;
-        TextView answerNum;
+        TextView readNum;
         TextView questionTitle;
         TextView questionLabel;
     }
@@ -72,7 +72,7 @@ public class QuestionItemAdapter extends BaseAdapter{
             convertView = inflater.inflate(R.layout.layout_item_question_model, null);
             holder.headImage = (ImageView) convertView.findViewById(R.id.question_head);
             holder.username = (TextView) convertView.findViewById(R.id.question_name);
-            holder.answerNum = (TextView) convertView.findViewById(R.id.answer_num);
+            holder.readNum = (TextView) convertView.findViewById(R.id.read_num);
             holder.questionTitle = (TextView) convertView.findViewById(R.id.question_title);
             holder.questionLabel = (TextView) convertView.findViewById(R.id.question_label);
             convertView.setTag(holder);
@@ -80,6 +80,10 @@ public class QuestionItemAdapter extends BaseAdapter{
             holder = (ViewHolder) convertView.getTag();
         }
         //imageLoader加载图像
+        holder.username.setText(list.get(position).getUserName());
+        holder.readNum.setText(list.get(position).getReadNum());
+        holder.questionTitle.setText(list.get(position).getTitle());
+        holder.questionLabel.setText(list.get(position).getLabel());
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(context));
         imageLoader.displayImage(list.get(position).getHeadImage(), holder.headImage, options, animateFirstListener);
