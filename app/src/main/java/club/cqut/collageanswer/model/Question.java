@@ -1,20 +1,30 @@
 package club.cqut.collageanswer.model;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
+
 /**
  * 问题实体
  * Created by fenghao on 2015/6/28.
  */
+@JsonIgnoreProperties({"created_at", "updated_at"})
 public class Question {
 
+
     private int id; //问题的id
+    @JsonProperty("user_id")
     private int userId; //提问者的id
-    private int userName;//提问者的名字
+    @JsonProperty("username")
+    private String userName;//提问者的名字
+    @JsonProperty("head_image")
     private String headImage; //提问者的头像
 //    private int answerNum;//回答数
     private String title;
     private String content;
     private String label; //问题标签 各个标签按逗号隔开
+    @JsonProperty("read_num")
     private String readNum; //阅读量
+    @JsonProperty("owner_id")
     private int ownerId;//上一级id ，为0表示没有追问
 
     public int getId() {
@@ -73,11 +83,11 @@ public class Question {
         this.ownerId = ownerId;
     }
 
-    public int getUserName() {
+    public String getUserName() {
         return userName;
     }
 
-    public void setUserName(int userName) {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
