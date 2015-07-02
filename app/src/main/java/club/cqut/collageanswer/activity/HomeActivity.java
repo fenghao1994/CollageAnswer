@@ -40,11 +40,14 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
     @ViewById
     protected LinearLayout layout_search;
     @ViewById
-    protected TextView activity_title;
+    protected TextView activity_title, text_question, text_recommend, text_rank, text_mine;
     @ViewById
     protected LinearLayout layout_title;
     @ViewById
     protected LinearLayout add_question;
+
+    @ViewById
+    protected ImageView img_question, img_recommend, img_add_question, img_rank, img_mine;
 
     @AfterViews
     public void init(){
@@ -57,11 +60,28 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
         add_question.setOnClickListener(this);
         chioceFragment(0);
     }
+
+    /**
+     * 初始化底部的布局
+     */
+    public void initImageAndText(){
+        img_question.setImageResource(R.mipmap.a);
+        img_recommend.setImageResource(R.mipmap.b);
+        img_add_question.setImageResource(R.mipmap.c_1);
+        img_rank.setImageResource(R.mipmap.d);
+        img_mine.setImageResource(R.mipmap.f);
+        text_question.setTextColor(getResources().getColor(R.color.bottom_black));
+        text_recommend.setTextColor(getResources().getColor(R.color.bottom_black));
+        text_rank.setTextColor(getResources().getColor(R.color.bottom_black));
+        text_mine.setTextColor(getResources().getColor(R.color.bottom_black));
+
+    }
+
     public void chioceFragment(int index){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         hineFragment(fragmentTransaction);
-
+        initImageAndText();
         switch(index ){
             case 0:
                 if(questionFragment == null){
@@ -70,6 +90,8 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
                 }else{
                     fragmentTransaction.show( questionFragment);
                 }
+                img_question.setImageResource(R.mipmap.a_1);
+                text_question.setTextColor(getResources().getColor(R.color.bottom_blue));
                 break;
             case 1:
                 if(recommendFragment == null){
@@ -78,6 +100,8 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
                 }else{
                     fragmentTransaction.show( recommendFragment);
                 }
+                img_recommend.setImageResource(R.mipmap.b_1);
+                text_recommend.setTextColor(getResources().getColor(R.color.bottom_blue));
                 break;
             case 2:
                 if(rankFragment == null){
@@ -86,6 +110,8 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
                 }else{
                     fragmentTransaction.show( rankFragment);
                 }
+                img_rank.setImageResource(R.mipmap.d_1);
+                text_rank.setTextColor(getResources().getColor(R.color.bottom_blue));
                 break;
             case 3:
                 if(mineFragment == null){
@@ -94,13 +120,18 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
                 }else{
                     fragmentTransaction.show( mineFragment);
                 }
+                img_mine.setImageResource(R.mipmap.f_1);
+                text_mine.setTextColor(getResources().getColor(R.color.bottom_blue));
                 break;
         }
         fragmentTransaction.commit();
     }
 
 
-
+    /**
+     * 隐藏fragment
+     * @param fragmentTransaction
+     */
     public void hineFragment(FragmentTransaction fragmentTransaction){
         if(questionFragment != null){
             fragmentTransaction.hide(questionFragment);

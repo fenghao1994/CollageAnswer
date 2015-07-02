@@ -29,4 +29,13 @@ public class HttpUrl {
 
     //新增答案
     public static final String POST_ONE_ANSWER = ROOT + "/front/answers";
+
+    //新增问题
+    public static final String POST_ONE_QUESTION = ROOT + "/front/questions";
+
+    //时候可以进行点赞
+    public static final String POST_CHECK_PRISE = ROOT + "/front/association/judge_praise";
+
+    //搜索问题
+    public static final String POST_SEARCH_QUESTION = ROOT + "/front/questions/search";
 }
