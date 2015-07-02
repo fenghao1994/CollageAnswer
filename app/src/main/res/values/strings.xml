@@ -7,4 +7,5 @@
     <string name="hint_login_account">手机号\\邮箱\\用户名</string>
     <string name="hint_login_password">密码(位数不能小于8位)</string>
     <string name="hint_login_password_confirm">确认密码</string>
+    <string name="title_activity_response">ResponseActivity</string>
 </resources>

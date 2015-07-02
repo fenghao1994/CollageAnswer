@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="club.cqut.collageanswer" >
 
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="ANDROID.PERMISSION.WRITE_SETTINGS"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -42,15 +42,6 @@
 
         <activity
             android:name=".activity.AddQuestionActivity_"
-            android:label="@string/title_activity_home" >
-        </activity>
-        <activity
-            android:name=".activity.AllAnswerActivity_"
-            android:label="@string/title_activity_home" >
-        </activity>
-
-        <activity
-            android:name=".activity.SpecificAnswerActivity_"
             android:label="@string/title_activity_home" >
         </activity>
     </application>
