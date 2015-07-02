@@ -1,8 +1,11 @@
 package club.cqut.collageanswer.fragment;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,10 +20,13 @@ import org.androidannotations.annotations.ViewById;
 import org.apache.http.Header;
 import org.codehaus.jackson.type.TypeReference;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import club.cqut.collageanswer.R;
+import club.cqut.collageanswer.activity.AllAnswerActivity;
+import club.cqut.collageanswer.activity.AllAnswerActivity_;
 import club.cqut.collageanswer.adapter.QuestionItemAdapter;
 import club.cqut.collageanswer.model.Question;
 import club.cqut.collageanswer.util.http.BaseJsonHttpResponseHandler;
@@ -48,6 +54,17 @@ public class BestHotQuestionFragment extends Fragment {
         adapter = new QuestionItemAdapter(getActivity());
         listview.setMode(PullToRefreshBase.Mode.BOTH);
         initListView();
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Question question = adapter.list.get(position - 1);
+                Intent intent = new Intent(getActivity(), AllAnswerActivity_.class);
+                intent.putExtra("question", (Serializable)question);
+                startActivity(intent);
+            }
+        });
+
         listview.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             //下拉刷新
             @Override

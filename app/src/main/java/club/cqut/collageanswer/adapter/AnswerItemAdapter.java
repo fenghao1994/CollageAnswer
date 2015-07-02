@@ -17,24 +17,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 import club.cqut.collageanswer.R;
-import club.cqut.collageanswer.model.Question;
-
+import club.cqut.collageanswer.model.Answer;
 
 /**
- * 问题的适配器
- * Created by fenghao on 2015/6/29.
+ * 答案的适配器
+ * Created by fenghao on 2015/7/1.
  */
-public class QuestionItemAdapter extends BaseAdapter{
+public class AnswerItemAdapter extends BaseAdapter{
 
     static class ViewHolder{
         ImageView headImage;
-        TextView username;
-        TextView readNum;
-        TextView questionTitle;
-        TextView questionLabel;
+        TextView priseNum;
+        TextView roleName;
+        TextView answerContent;
     }
+
     private Context context;
-    public List<Question> list = new ArrayList<>();
+    public List<Answer> list = new ArrayList<>();
     private LayoutInflater inflater;
 
     // DisplayImageOptions的初始化
@@ -47,23 +46,16 @@ public class QuestionItemAdapter extends BaseAdapter{
             .bitmapConfig(Bitmap.Config.RGB_565)
             .build();
 
-    public QuestionItemAdapter(Context context) {
+    public AnswerItemAdapter(Context context) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
     }
 
-    public List<Question> getList() {
-        return list;
-    }
-
-    public void setList(List<Question> list) {
-        this.list = list;
-    }
 
     /**
      * 得到最新数据往list里面添加
      */
-    public void addNewQuestion(List<Question> questions){
+    public void addNewAnswer(List<Answer> questions){
         list.clear();
         list.addAll( questions);
     }
@@ -72,7 +64,7 @@ public class QuestionItemAdapter extends BaseAdapter{
      * 加载更多的时候往list的最后加数据
      * @param questions
      */
-    public void addOldQuestion(List<Question> questions){
+    public void addOldAnswer(List<Answer> questions){
         list.addAll(list.size(), questions);
     }
 
@@ -97,29 +89,19 @@ public class QuestionItemAdapter extends BaseAdapter{
         ViewHolder holder = null;
         if(convertView == null){
             holder = new ViewHolder();
-            convertView = inflater.inflate(R.layout.layout_item_question_model, null);
-            holder.headImage = (ImageView) convertView.findViewById(R.id.question_head);
-            holder.username = (TextView) convertView.findViewById(R.id.question_name);
-            holder.readNum = (TextView) convertView.findViewById(R.id.read_num);
-            holder.questionTitle = (TextView) convertView.findViewById(R.id.question_title);
-            holder.questionLabel = (TextView) convertView.findViewById(R.id.question_label);
+            convertView = inflater.inflate(R.layout.layout_item_answer_model, null);
+            holder.headImage = (ImageView) convertView.findViewById(R.id.head_image);
+            holder.priseNum = (TextView) convertView.findViewById(R.id.prise_num);
+            holder.roleName = (TextView) convertView.findViewById(R.id.role_name);
+            holder.answerContent = (TextView) convertView.findViewById(R.id.answer_content);
             convertView.setTag(holder);
         }else {
             holder = (ViewHolder) convertView.getTag();
         }
         //imageLoader加载图像
-        holder.username.setText(list.get(position).getUserName());
-        holder.readNum.setText(list.get(position).getReadNum());
-        holder.questionTitle.setText(list.get(position).getTitle());
-
-        //处理标签
-        String[] split = list.get(position).getLabel().split(",");
-        String str = "";
-        for (int i = 0 ; i < split.length ; i++){
-            str += split[i] + "  ";
-        }
-        holder.questionLabel.setText(str);
-
+        holder.priseNum.setText(list.get(position).getPriseNum() + "");
+        holder.roleName.setText(list.get(position).getUserRole());
+        holder.answerContent.setText(list.get(position).getContext());
 
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(context));

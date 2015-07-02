@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <!--关注的人的列表-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:gravity="center_vertical"
+        >
+        <club.cqut.collageanswer.RoungImage.CircleImageView
+            android:id="@+id/head_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/bootstrap_1"
+            android:layout_marginRight="10dp"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/role_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="信息"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:id="@+id/user_sign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxEms="15"
+                android:text="嘎达股份将奥迪斯哦皮肤将奥迪斯哦评价飞大厦"
+                />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:background="#000000"
+            android:layout_width="1dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="5dp"
+            >
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/prise"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/raiseprise"
+            android:layout_marginLeft="6dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ABABAB"
+        ></LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="20dp"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingRight="20dp"
+        >
+
+        <club.cqut.collageanswer.RoungImage.CircleImageView
+            android:id="@+id/head_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/bootstrap_1"
+            android:layout_gravity="center_vertical"
+            />
+
+        <!--点赞数-->
+        <TextView
+            android:id="@+id/prise_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:textColor="@color/blue"
+            android:layout_gravity="center_horizontal"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/role_name"
+            android:textSize="20sp"
+            android:text="hahaha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            />
+        <TextView
+            android:id="@+id/answer_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="回答内容"
+            android:maxLines="4"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

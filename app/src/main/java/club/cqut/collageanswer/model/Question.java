@@ -3,12 +3,14 @@ package club.cqut.collageanswer.model;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
+import java.io.Serializable;
+
 /**
  * 问题实体
  * Created by fenghao on 2015/6/28.
  */
 @JsonIgnoreProperties({"created_at", "updated_at"})
-public class Question {
+public class Question implements Serializable{
 
 
     private int id; //问题的id

@@ -20,4 +20,13 @@ public class HttpUrl {
 
     //获取最新问题
     public static final String GET_HOT_QUESTION = ROOT + "/front/question_hottest";
+
+    //获得一个问题的所有答案
+    public static final String GET_ALL_ANSWERS = ROOT + "/front/answers?question_id=";
+
+    //获得一个答案的详细信息
+    public static final String GET_ONE_ANSWER = ROOT + "/front/answers";
+
+    //新增答案
+    public static final String POST_ONE_ANSWER = ROOT + "/front/answers";
 }
