@@ -69,6 +69,16 @@ public class AllAnswerActivity extends Activity {
         question_content.setText(question.getContent());
         firstIn();
         initListView();
+        headback.showRightButton();
+        headback.setImageViewRightIconRes(R.mipmap.bootstrap_1);
+        headback.getRightButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent t = new Intent(getApplication(), ResponseActivity_.class);
+                t.putExtra("question", question);
+                startActivity(t);
+            }
+        });
 
         adapter = new AnswerItemAdapter(this);
         listview.setMode(PullToRefreshBase.Mode.BOTH);

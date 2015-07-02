@@ -26,6 +26,7 @@ import java.util.List;
 
 import club.cqut.collageanswer.R;
 import club.cqut.collageanswer.adapter.QuestionItemAdapter;
+import club.cqut.collageanswer.customview.HeadBackView;
 import club.cqut.collageanswer.model.Question;
 
 /**
@@ -40,7 +41,7 @@ public class SearchQuestionActivity extends Activity implements OnClickListener{
     @ViewById
     protected ImageView search_delect;
     @ViewById
-    protected TextView cancel_text;
+    protected HeadBackView headback;
     @ViewById
     protected TextView search_text;
     @ViewById
@@ -52,9 +53,8 @@ public class SearchQuestionActivity extends Activity implements OnClickListener{
     protected void init(){
         search_question.setOnClickListener(this);
         search_delect.setOnClickListener(this);
-        cancel_text.setOnClickListener(this);
         search_text.setOnClickListener(this);
-
+        headback.setTitle("搜索问题");
         search_question.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -65,12 +65,8 @@ public class SearchQuestionActivity extends Activity implements OnClickListener{
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (search_question.getText().length() != 0) {
                     search_delect.setImageResource(R.mipmap.delete);
-                    cancel_text.setVisibility(View.GONE);
-                    search_text.setVisibility(View.VISIBLE);
                 } else {
                     search_delect.setImageResource(R.mipmap.search);
-                    cancel_text.setVisibility(View.VISIBLE);
-                    search_text.setVisibility(View.GONE);
                 }
             }
 
@@ -134,7 +130,6 @@ public class SearchQuestionActivity extends Activity implements OnClickListener{
     @Override
     public void onClick(View v) {
         switch ( v.getId()){
-            case R.id.cancel_text:this.finish();break;
             case R.id.search_text:
                 Toast.makeText(this, "搜索", Toast.LENGTH_LONG).show();
                 break;
