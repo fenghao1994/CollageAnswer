@@ -10,12 +10,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
         <activity
             android:name=".activity.HomeActivity_"
             android:label="@string/title_activity_home" >
         </activity>
-
         <activity
             android:name=".activity.GuideActivity_"
             android:label="@string/title_activity_home" >
@@ -43,6 +41,35 @@
         <activity
             android:name=".activity.AddQuestionActivity_"
             android:label="@string/title_activity_home" >
+        </activity>
+        <activity
+            android:name=".activity.ResponseActivity_"
+            android:label="@string/title_activity_response" >
+        </activity>
+
+        <activity
+            android:name=".activity.AllAnswerActivity_"
+            android:label="@string/title_activity_response" >
+        </activity>
+
+        <activity
+            android:name=".activity.SpecificAnswerActivity_"
+            android:label="@string/title_activity_response" >
+        </activity>
+
+        <activity
+            android:name=".activity.EmailAttestActivity_"
+            android:label="@string/title_activity_response" >
+        </activity>
+
+        <activity
+            android:name=".activity.FriendsAttestActivity_"
+            android:label="@string/title_activity_response" >
+        </activity>
+
+        <activity
+            android:name=".activity.AttestActivity_"
+            android:label="@string/title_activity_response" >
         </activity>
     </application>
 

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        class="club.cqut.collageanswer.customview.HeadBackView_"
+        android:layout_alignParentTop="true"
+        android:id="@+id/view_head" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:id="@+id/search"
+        >
+        <EditText
+            android:id="@+id/search_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/input"
+            android:textSize="20dp"
+            android:hint="寻找朋友"
+            android:singleLine="true" />
+
+        <ImageView
+            android:id="@+id/search_start"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:src="@mipmap/search"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:layout_alignRight="@+id/search_content"
+            />
+    </RelativeLayout>
+
+        <TextView
+            android:id="@+id/search_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:textSize="30dp"
+            android:text="搜索"/>
+
+    </LinearLayout>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+
+
+</LinearLayout>
