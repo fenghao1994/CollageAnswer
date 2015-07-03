@@ -113,10 +113,13 @@ public class QuestionItemAdapter extends BaseAdapter{
         holder.questionTitle.setText(list.get(position).getTitle());
 
         //处理标签
-        String[] split = list.get(position).getLabel().split(",");
+        String[] split = {};
         String str = "";
-        for (int i = 0 ; i < split.length ; i++){
-            str += split[i] + "  ";
+        if( list.get(position).getLabel() != null && !list.get(position).getLabel().equals("")){
+            split = list.get(position).getLabel().split(",");
+            for (int i = 0 ; i < split.length ; i++){
+                str += split[i] + "  ";
+            }
         }
         holder.questionLabel.setText(str);
 

@@ -33,9 +33,12 @@ public class HttpUrl {
     //新增问题
     public static final String POST_ONE_QUESTION = ROOT + "/front/questions";
 
-    //时候可以进行点赞
+    //是否可以进行点赞
     public static final String POST_CHECK_PRISE = ROOT + "/front/association/judge_praise";
 
     //搜索问题
     public static final String POST_SEARCH_QUESTION = ROOT + "/front/questions/search";
+
+    //点赞
+    public static final String POST_PRISE = ROOT + "/front/answers/praise";
 }

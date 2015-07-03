@@ -55,7 +55,7 @@ public class SpecificAnswerActivity extends Activity{
     protected UserInfo_ userInfo;
 
     Answer answer;
-    String message;
+    boolean message;
 
 // TODO  访问网络 判断该用户是否可以进行点赞
     @AfterViews
@@ -64,7 +64,6 @@ public class SpecificAnswerActivity extends Activity{
         Intent intent = getIntent();
         Question question = (Question) intent.getSerializableExtra("question");
         answer = (Answer) intent.getSerializableExtra("answer");
-
         question_title.setText(question.getTitle());
         role_name.setText(answer.getUserRole());
         if( answer.getUserSign() == null || answer.getUserSign().equals("")){
@@ -73,12 +72,10 @@ public class SpecificAnswerActivity extends Activity{
             user_sign.setText(answer.getUserSign());
         }
         prise_num.setText(answer.getPriseNum() + "");
-
         answer_content.setText(answer.getContext());
         showHeadImage(answer.getHeadImage());
-        toCheckPrise();
+        sentPrise();
     }
-
     @UiThread
     public void showHeadImage(String url){
         // DisplayImageOptions的初始化
@@ -90,57 +87,53 @@ public class SpecificAnswerActivity extends Activity{
                 .cacheOnDisk(true)
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .build();
-
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(this));
         imageLoader.displayImage(url, head_image, options);
     }
 
-    /**
-     * 核对是否可以进行点赞
-     */
-    public void toCheckPrise(){
-        RequestParams params = new RequestParams();
-        params.put("user_id", userInfo.id().get());
-        params.put("answer_id", answer.getId());
-        HttpClient.post(this, HttpUrl.POST_CHECK_PRISE, params, new BaseJsonHttpResponseHandler(this) {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                Map<String, Object> map = JacksonMapper.parse(responseString);
-                message = (String) map.get("message");
-            }
-        });
-    }
-
-    @Click(R.id.prise_num)
+    @Click(R.id.prise)
     protected void clickPrise(){
-        toCheckPrise();
-        if(message.equals("yes")){
-            prise.setImageResource(R.mipmap.pressprise);
-            int num = Integer.parseInt(prise_num.getText().toString());
-            prise_num.setText((num + 1) + "");
-        }else{
-            prise.setImageResource(R.mipmap.pressprise);
-        }
+        isAddPriseNum();
     }
-
     /**
      * 点赞后发送到服务器
      */
 
     public void sentPrise(){
         RequestParams params = new RequestParams();
-        params.put("", "");
-        HttpClient.post(this, "", "", new BaseJsonHttpResponseHandler(this){
+        params.put("user_id", userInfo.id().get());
+        params.put("answer_id", answer.getId());
+        HttpClient.post(this, HttpUrl.POST_PRISE, params, new BaseJsonHttpResponseHandler(this){
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
-
+                Map<String, Object> map = JacksonMapper.parse(responseString);
+                if(map.containsValue("success")){
+                    prise.setImageResource(R.mipmap.raiseprise);
+                    message = true;
+                }else{
+                    message = false;
+                    prise.setImageResource(R.mipmap.pressprise);
+                }
             }
-
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                Toast.makeText(getApplication(), "点赞失败！", Toast.LENGTH_LONG).show();
+                Map<String, Object> map = JacksonMapper.parse(responseString);
+                message = false;
             }
         });
+    }
+
+    /**
+     * 是否进行
+     */
+    public void isAddPriseNum( ){
+        if ( message){
+            prise.setEnabled(true);
+            prise.setImageResource(R.mipmap.pressprise);
+            prise_num.setText( (answer.getPriseNum() + 1) + "" );
+        }else {
+            prise.setEnabled(false);
+        }
     }
 }

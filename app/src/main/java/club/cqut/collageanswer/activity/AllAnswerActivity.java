@@ -181,12 +181,14 @@ public class AllAnswerActivity extends Activity {
      * @return
      */
     public String splitLabel(Question question){
-        String[] strings = question.getLabel().split(",");
+        String[] strings = {};
         String str = "";
-        for(int i = 0 ; i < strings.length ; i++){
-            str += strings[i] + "  ";
+        if( question.getLabel() != null && !question.getLabel().equals("")){
+            strings = question.getLabel().split(",");
+            for(int i = 0 ; i < strings.length ; i++){
+                str += strings[i] + "  ";
+            }
         }
         return str;
     }
-
 }
