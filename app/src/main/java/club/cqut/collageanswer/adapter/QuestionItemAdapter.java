@@ -112,6 +112,8 @@ public class QuestionItemAdapter extends BaseAdapter{
         holder.readNum.setText(list.get(position).getReadNum());
         holder.questionTitle.setText(list.get(position).getTitle());
 
+
+
         //处理标签
         String[] split = {};
         String str = "";
