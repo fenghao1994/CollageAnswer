@@ -1,9 +1,12 @@
 package club.cqut.collageanswer.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -186,6 +189,11 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
                 activity_title.setText("排行榜");
                 break;
             case R.id.layout_mine:
+                if(userInfo.id().get() == -1){
+                    Intent t = new Intent(this, LoginActivity_.class);
+                    startActivity(t);
+                    return;
+                }
                 chioceFragment(3);
                 layout_search.setVisibility(View.GONE);
                 layout_title.setVisibility(View.VISIBLE);
@@ -220,8 +228,38 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
             Intent intent = new Intent(this, AttestEditActivity_.class);
             startActivity(intent);
         }
+    }
 
 
+    /**
+     * 退出程序判断
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            AlertDialog.Builder builder = new AlertDialog.Builder( this);
+            builder.setTitle("系统提示:");
+            builder.setMessage("确定要退出吗？");
+            builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    finish();
+                }
+            });
+            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            builder.create().show();
+        }
+        return false;
     }
 
 }

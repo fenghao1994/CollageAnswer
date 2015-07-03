@@ -18,7 +18,7 @@ public class HttpUrl {
     //获取最新问题
     public static final String GET_NEW_QUESTION = ROOT + "/front/questions";
 
-    //获取最新问题
+    //获取最热问题
     public static final String GET_HOT_QUESTION = ROOT + "/front/question_hottest";
 
     //获得一个问题的所有答案

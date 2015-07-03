@@ -1,9 +1,12 @@
 package club.cqut.collageanswer.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -38,7 +41,7 @@ import club.cqut.collageanswer.util.http.JacksonMapper;
  * Created by fenghao on 2015/6/29.
  */
 @EActivity(R.layout.activity_login)
-public class LoginActivity extends Activity{
+public class LoginActivity extends Activity {
 
     @ViewById
     protected HeadBackView view_head;
@@ -61,13 +64,7 @@ public class LoginActivity extends Activity{
 
     @AfterViews
     protected void init(){
-        view_head.hineLeftButton();
         view_head.setTitle("登录");
-
-        if(userInfo.id().get() != -1){
-            skipActivity();
-        }
-
         //判断密码长度不能小于8位
         editText_password.addTextChangedListener(new TextWatcher() {
             @Override
@@ -159,7 +156,7 @@ public class LoginActivity extends Activity{
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                Toast.makeText(getApplication(), "登陆失败 " + statusCode, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplication(), "登陆失败,请核对用户名和密码", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -171,5 +168,6 @@ public class LoginActivity extends Activity{
         Intent intent = new Intent(this, HomeActivity_.class);
         startActivity(intent);
     }
+
 
 }

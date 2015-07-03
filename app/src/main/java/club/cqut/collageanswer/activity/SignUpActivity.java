@@ -264,7 +264,6 @@ public class SignUpActivity extends Activity {
             for(int i = 0 ; i < provinceList.size() ; i++){
                 arrayList.add(provinceList.get(i).getName());
             }
-            Toast.makeText(this, arrayList.size() + "", Toast.LENGTH_LONG).show();
             adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, arrayList);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);

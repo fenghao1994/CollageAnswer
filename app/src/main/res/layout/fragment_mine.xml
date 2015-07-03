@@ -2,8 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/mine_layout"
-    android:visibility="gone"
     >
 
     <!--我的页面-->
@@ -14,9 +12,11 @@
         >
 
         <LinearLayout
+            android:id="@+id/mine_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:visibility="gone"
             >
 
     <LinearLayout
