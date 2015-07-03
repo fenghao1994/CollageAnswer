@@ -71,6 +71,21 @@
             android:name=".activity.AttestActivity_"
             android:label="@string/title_activity_response" >
         </activity>
+
+        <activity
+            android:name=".activity.EditActivity_"
+            android:label="@string/title_activity_response" >
+        </activity>
+
+        <activity
+            android:name=".activity.MyAnswerActivity_"
+            android:label="@string/title_activity_response" >
+        </activity>
+
+        <activity
+            android:name=".activity.MyQuestionActivity_"
+            android:label="@string/title_activity_response" >
+        </activity>
     </application>
 
 </manifest>
