@@ -19,12 +19,14 @@
             android:layout_height="40dp"
             android:src="@mipmap/bootstrap_1"
             android:layout_marginRight="10dp"
+            android:layout_weight="1"
             />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:layout_weight="2"
             >
             <TextView
                 android:id="@+id/role_name"
@@ -39,30 +41,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxEms="15"
-                android:text="嘎达股份将奥迪斯哦皮肤将奥迪斯哦评价飞大厦"
+                android:text="迪斯哦评价飞大厦fen疯子放荡女法师购买哦哦牛皮发动佩服你"
                 />
 
         </LinearLayout>
 
-
-
         <LinearLayout
-            android:background="#000000"
-            android:layout_width="1dp"
-            android:layout_height="35dp"
-            android:layout_marginRight="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|right"
+            android:layout_weight="1"
             >
 
+            <LinearLayout
+                android:background="#000000"
+                android:layout_width="1dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="5dp"
+                >
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/prise"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/raiseprise"
+                android:layout_marginRight="3dp"
+                />
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/prise"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@mipmap/raiseprise"
-            android:layout_marginLeft="6dp"
-            />
-
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
