@@ -139,8 +139,10 @@ public class MyAnswerActivity extends Activity {
                 });
                 page = headers[8].getValue();
                 if (type == REFRESH) {
-                    adapter.addNewQA(questions_answer);
-                    adapter.notifyDataSetChanged();
+                    if(questions_answer != null && questions_answer.size() != 0){
+                        adapter.addNewQA(questions_answer);
+                        adapter.notifyDataSetChanged();
+                    }
                 } else {
                     if (questions_answer.size() == 0) {
                         Toast.makeText(getApplication(), "没有更多数据！", Toast.LENGTH_LONG).show();

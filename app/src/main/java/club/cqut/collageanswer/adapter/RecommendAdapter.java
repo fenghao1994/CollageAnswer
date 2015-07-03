@@ -1,6 +1,7 @@
 package club.cqut.collageanswer.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +38,24 @@ public class RecommendAdapter extends BaseAdapter{
         this.inflater = LayoutInflater.from(context);
     }
 
+    static class ViewHolder{
+        ImageView cover;
+        TextView name;
+        TextView read_num;
+        TextView question_title;
+        TextView question_lable;
+    }
+
+    // DisplayImageOptions的初始化
+    DisplayImageOptions options = new DisplayImageOptions.Builder()
+            .showImageForEmptyUri(R.mipmap.bootstrap_1)
+            .showImageOnLoading(R.mipmap.bootstrap_1)
+            .showImageOnFail(R.mipmap.ic_launcher)
+            .cacheInMemory(true)
+            .cacheOnDisk(true)
+            .bitmapConfig(Bitmap.Config.RGB_565)
+            .build();
+
     @Override
     public int getCount() {
         return list.size();
@@ -54,30 +73,27 @@ public class RecommendAdapter extends BaseAdapter{
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = null;
-
+        ViewHolder holder = null;
         if(convertView == null){
-            view = inflater.inflate(R.layout.layout_item_question_model, null);
+            holder = new ViewHolder();
+            convertView = inflater.inflate(R.layout.layout_item_question_model, null);
+            holder.cover = (ImageView) convertView.findViewById(R.id.question_head);
+            holder.name = (TextView) convertView.findViewById(R.id.question_name);
+            holder.read_num = (TextView) convertView.findViewById(R.id.read_num);
+            holder.question_title = (TextView) convertView.findViewById(R.id.question_title);
+            holder.question_lable = (TextView) convertView.findViewById(R.id.question_label);
+            convertView.setTag(holder);
         } else {
-            view = convertView;
+            holder = (ViewHolder) convertView.getTag();
         }
-
-        ImageView cover = (ImageView) view.findViewById(R.id.question_head);
-        TextView name = (TextView) view.findViewById(R.id.question_name);
-        TextView read_num = (TextView) view.findViewById(R.id.read_num);
-        TextView question_title = (TextView) view.findViewById(R.id.question_title);
-        TextView question_lable = (TextView) view.findViewById(R.id.question_label);
-
         //头像
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(context));
-
-        name.setText(list.get(position).getUserName());
-        Log.w("000",list.get(position).getReadNum()+"");
-        read_num.setText(list.get(position).getReadNum());
-        question_title.setText(list.get(position).getTitle());
-        question_lable.setText(list.get(position).getLabel());
-
-        return view;
+        imageLoader.displayImage(list.get(position).getHeadImage(), holder.cover, options);
+        holder.name.setText(list.get(position).getUserName());
+        holder.read_num.setText(list.get(position).getReadNum());
+        holder.question_title.setText(list.get(position).getTitle());
+        holder.question_lable.setText(list.get(position).getLabel());
+        return convertView;
     }
 }

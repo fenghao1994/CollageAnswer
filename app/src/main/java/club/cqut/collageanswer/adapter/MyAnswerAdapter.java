@@ -98,6 +98,7 @@ public class MyAnswerAdapter extends BaseAdapter {
             holder.username = (TextView) convertView.findViewById(R.id.questioner_name);
             holder.question = (TextView) convertView.findViewById(R.id.question_content);
             holder.answer = (TextView) convertView.findViewById(R.id.answer_content);
+            convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
@@ -105,7 +106,6 @@ public class MyAnswerAdapter extends BaseAdapter {
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(context));
         imageLoader.displayImage(list.get(position).getQuestionCover(), holder.headImage, options);
-
         holder.username.setText(list.get(position).getQuestionName());
         holder.question.setText(list.get(position).getContent());
         holder.answer.setText(list.get(position).getAnswer());
