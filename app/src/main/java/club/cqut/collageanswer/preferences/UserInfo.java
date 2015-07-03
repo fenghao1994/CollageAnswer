@@ -40,6 +40,11 @@ public interface UserInfo {
     String email();
 
     /**
+     * 学号
+     */
+    String stuNumber();
+
+    /**
      * 用户登录令牌
      * @return
      */

@@ -12,8 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 
 import club.cqut.collageanswer.R;
 import club.cqut.collageanswer.fragment.MineFragment_;
@@ -22,6 +24,7 @@ import club.cqut.collageanswer.fragment.QuestionFragment_;
 import club.cqut.collageanswer.fragment.RankFragment_;
 import club.cqut.collageanswer.fragment.RecommendFragment;
 import club.cqut.collageanswer.fragment.RecommendFragment_;
+import club.cqut.collageanswer.preferences.UserInfo_;
 
 @EActivity(R.layout.activity_home)
 public class HomeActivity extends FragmentActivity implements View.OnClickListener{
@@ -45,6 +48,11 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
     protected LinearLayout layout_title;
     @ViewById
     protected LinearLayout add_question;
+    @ViewById
+    protected TextView edit, attest;
+
+    @Pref
+    protected UserInfo_ userInfo;
 
     @ViewById
     protected ImageView img_question, img_recommend, img_add_question, img_rank, img_mine;
@@ -154,11 +162,15 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
                 chioceFragment(0);
                 layout_search.setVisibility(View.VISIBLE);
                 layout_title.setVisibility(View.GONE);
+                edit.setVisibility(View.GONE);
+                attest.setVisibility(View.GONE);
                 break;
             case R.id.layout_recommend:
                 chioceFragment(1);
                 layout_search.setVisibility(View.GONE);
                 layout_title.setVisibility(View.VISIBLE);
+                edit.setVisibility(View.GONE);
+                attest.setVisibility(View.GONE);
                 activity_title.setText("推荐");
                 break;
             case R.id.add_question:
@@ -169,12 +181,16 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
                 chioceFragment(2);
                 layout_search.setVisibility(View.GONE);
                 layout_title.setVisibility(View.VISIBLE);
+                edit.setVisibility(View.GONE);
+                attest.setVisibility(View.GONE);
                 activity_title.setText("排行榜");
                 break;
             case R.id.layout_mine:
                 chioceFragment(3);
                 layout_search.setVisibility(View.GONE);
                 layout_title.setVisibility(View.VISIBLE);
+                edit.setVisibility(View.VISIBLE);
+                attest.setVisibility(View.VISIBLE);
                 activity_title.setText("我的信息");
                 break;
             case R.id.layout_search:
@@ -185,4 +201,27 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
             default:break;
         }
     }
+
+
+    @Click(R.id.edit)
+    protected void goEdit(){
+        Intent intent = new Intent(this, EditActivity_.class);
+        startActivity(intent);
+    }
+
+    @Click(R.id.attest)
+    protected void goAttest(){
+
+        if (userInfo.realName().get() != null && !userInfo.realName().get().equals("")
+                && userInfo.stuNumber().get() != null && !userInfo.stuNumber().equals("") ){
+            Intent intent = new Intent(this, AttestActivity_.class);
+            startActivity(intent);
+        }else{
+            Intent intent = new Intent(this, AttestEditActivity_.class);
+            startActivity(intent);
+        }
+
+
+    }
+
 }

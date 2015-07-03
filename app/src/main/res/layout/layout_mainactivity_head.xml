@@ -63,19 +63,34 @@
 
 
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/layout_title"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="gone"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_gravity="center"
             >
+
+            <!-- 认证-->
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/attest"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:text="认证"
+                android:gravity="center"
+
+                />
+
             <TextView
                 android:id="@+id/activity_title"
                 android:layout_width="wrap_content"
@@ -92,19 +107,18 @@
                 android:layout_weight="4"
                 android:text="个人信息"
                 android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 />
 
-            <!--我要认证-->
+            <!--编辑-->
                 <TextView
                     android:visibility="gone"
-                    android:id="@+id/attest"
+                    android:id="@+id/edit"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@mipmap/bootstrap_1"
                     android:layout_weight="1"
-                    android:text="我要认证"
-                    android:gravity="center_vertical"
-                    android:layout_marginLeft="20dp"
+                    android:text="编辑"
+                    android:gravity="center"
                     />
 
         </LinearLayout>

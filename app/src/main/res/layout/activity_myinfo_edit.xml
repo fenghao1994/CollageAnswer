@@ -48,31 +48,6 @@
             android:layout_weight="1"
             android:textSize="20dp"
             android:paddingLeft="20dp"
-            android:text="真实姓名"/>
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_marginLeft="20dp"
-            android:hint="输入您的名字"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="20dp"
-            android:paddingLeft="20dp"
             android:text="年龄"/>
 
         <EditText
@@ -81,31 +56,6 @@
             android:layout_weight="2"
             android:layout_marginLeft="20dp"
             android:hint="请输入"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="20dp"
-            android:paddingLeft="20dp"
-            android:text="专业"/>
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_marginLeft="20dp"
-            android:hint="输入您的专业"
             />
 
     </LinearLayout>
@@ -166,6 +116,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/btn_login"/>
+        android:src="@drawable/btn_login"
+        android:id="@+id/save"/>
 
 </LinearLayout>

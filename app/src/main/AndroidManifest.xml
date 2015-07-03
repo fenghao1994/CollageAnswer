@@ -86,6 +86,16 @@
             android:name=".activity.MyQuestionActivity_"
             android:label="@string/title_activity_response" >
         </activity>
+
+        <activity
+            android:name=".activity.AttestEditActivity_"
+            android:label="@string/title_activity_response" >
+        </activity>
+
+        <activity
+            android:name=".activity.MyFocusActivity_"
+            android:label="@string/title_activity_response" >
+        </activity>
     </application>
 
 </manifest>
