@@ -2,18 +2,11 @@ package club.cqut.collageanswer.fragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.astuetz.PagerSlidingTabStrip;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.FragmentById;
 import org.androidannotations.annotations.ViewById;
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 import club.cqut.collageanswer.R;

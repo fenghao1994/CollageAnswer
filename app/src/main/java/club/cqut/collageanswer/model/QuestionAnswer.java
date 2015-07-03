@@ -12,7 +12,9 @@ public class QuestionAnswer {
     private int questionId;            //问题id
     private String questionCover;      //提问者的头像
     private String questionName;       //提问者昵称
+    @JsonProperty("questionContent")
     private String content;            //问题内容
+    @JsonProperty("content")
     private String answer;             //回答的内容
 
     public int getQuestionId() {

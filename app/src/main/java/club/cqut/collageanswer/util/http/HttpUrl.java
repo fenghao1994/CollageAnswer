@@ -41,4 +41,15 @@ public class HttpUrl {
 
     //点赞
     public static final String POST_PRISE = ROOT + "/front/answers/praise";
+
+    //推荐问题
+    public static final String GET_RECOMMMENT = ROOT + "/front/questions/recommend_info";
+
+    //推荐问题
+    public static final String GET_MYANSWER = ROOT + "/front/answers/user_already_answer";
+
+    //推荐问题
+    public static final String GET_QUESTION = ROOT + "/front/questions/user_already_ask";
+
+
 }

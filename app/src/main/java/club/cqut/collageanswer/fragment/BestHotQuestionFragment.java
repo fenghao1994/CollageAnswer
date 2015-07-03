@@ -129,13 +129,17 @@ public class BestHotQuestionFragment extends Fragment {
                 page = headers[8].getValue();
                 if (type == REFRESH) {
                     adapter.addNewQuestion(questions);
+                    adapter.notifyDataSetChanged();
                 } else {
                     if(questions.size() == 0){
                         Toast.makeText(getActivity(), "没有更多数据！", Toast.LENGTH_LONG).show();
+                    }else{
+                        adapter.addOldQuestion(questions);
+                        adapter.notifyDataSetChanged();
                     }
-                    adapter.addOldQuestion(questions);
+
                 }
-                adapter.notifyDataSetChanged();
+
                 listview.onRefreshComplete();
 
             }
