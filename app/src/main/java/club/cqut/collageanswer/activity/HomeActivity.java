@@ -176,7 +176,7 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
             case R.id.add_question:
                 Intent intent = new Intent(this, AddQuestionActivity_.class);
                 startActivity(intent);
-                ;break;
+                break;
             case R.id.layout_rank:
                 chioceFragment(2);
                 layout_search.setVisibility(View.GONE);
