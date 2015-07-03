@@ -43,7 +43,7 @@
                 android:id="@+id/my_info_name"
                 android:gravity="center"
                 android:textSize="20dp"
-                android:text="1111"/>
+                android:text="Leero"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -53,7 +53,16 @@
                 android:text="男"
                 android:layout_gravity="center"
                 />
+
         </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/go_attest"
+            android:paddingTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:src="@mipmap/yes_v"/>
 
     </LinearLayout>
 
@@ -106,7 +115,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="111111111112312312312"
+            android:text="这人很懒，什么也没留下..."
             android:gravity="left"
             android:paddingLeft="20dp"
             android:textSize="20dp"
@@ -131,14 +140,14 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="出生年月"
+            android:text="真实姓名"
             android:textSize="20dp"
             android:layout_weight="1"
             android:paddingLeft="60dp"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="12312312312"
+            android:text="暂无数据"
             android:gravity="left"
             android:paddingLeft="20dp"
             android:textSize="20dp"
@@ -162,7 +171,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="12312312312"
+            android:text="暂无数据"
             android:gravity="left"
             android:paddingLeft="20dp"
             android:textSize="20dp"
@@ -190,7 +199,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="广东"
+            android:text="暂无数据"
             android:gravity="left"
             android:paddingLeft="20dp"
             android:textSize="20dp"
@@ -216,7 +225,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="计算机协会"
+                    android:text="暂无数据"
                     android:gravity="left"
                     android:paddingLeft="20dp"
                     android:textSize="20dp"
@@ -242,13 +251,34 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="12312312312"
+                    android:text="这人很懒，什么也没留下..."
                     android:gravity="left"
                     android:paddingLeft="20dp"
                     android:textSize="20dp"
                     android:layout_weight="1"
                     />
             </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/my_question"
+                android:src="@drawable/btn_login"/>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/my_answer"
+                android:src="@drawable/btn_login"/>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/my_friends"
+                android:src="@drawable/btn_login"/>
 
         </LinearLayout>
     </ScrollView>
