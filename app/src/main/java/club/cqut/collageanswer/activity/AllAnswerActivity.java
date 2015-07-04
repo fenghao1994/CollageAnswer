@@ -3,8 +3,12 @@ package club.cqut.collageanswer.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,14 +16,16 @@ import com.handmark.pulltorefresh.library.ILoadingLayout;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.loopj.android.http.RequestParams;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 import org.apache.http.Header;
 import org.codehaus.jackson.type.TypeReference;
 
-import java.io.Serializable;
 import java.util.List;
 
 import club.cqut.collageanswer.R;
@@ -27,6 +33,7 @@ import club.cqut.collageanswer.adapter.AnswerItemAdapter;
 import club.cqut.collageanswer.customview.HeadBackView;
 import club.cqut.collageanswer.model.Answer;
 import club.cqut.collageanswer.model.Question;
+import club.cqut.collageanswer.preferences.UserInfo_;
 import club.cqut.collageanswer.util.http.BaseJsonHttpResponseHandler;
 import club.cqut.collageanswer.util.http.HttpClient;
 import club.cqut.collageanswer.util.http.HttpUrl;
@@ -48,6 +55,16 @@ public class AllAnswerActivity extends Activity {
     protected TextView question_content;
     @ViewById
     protected PullToRefreshListView listview;
+    @ViewById
+    protected MaterialEditText fast_answer;
+    @ViewById
+    protected TextView commit;
+    @ViewById
+    protected LinearLayout layout_role;
+    @ViewById
+    protected RadioButton username, real_name;
+    @Pref
+    protected UserInfo_ userInfo;
 
     public final String REFRESH = "0";//表示下拉刷新
     public final String LOADMORE = "1";//表示上拉刷新
@@ -115,6 +132,19 @@ public class AllAnswerActivity extends Activity {
         listview.setAdapter(adapter);
 
 
+        fast_answer.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    layout_role.setVisibility(View.VISIBLE);
+                } else {
+                    layout_role.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        username.setText( userInfo.name().get());
+        real_name.setText( userInfo.realName().get());
     }
 
     /**
@@ -169,7 +199,6 @@ public class AllAnswerActivity extends Activity {
                 }
                 adapter.notifyDataSetChanged();
                 listview.onRefreshComplete();
-
             }
         });
     }
@@ -190,5 +219,41 @@ public class AllAnswerActivity extends Activity {
             }
         }
         return str;
+    }
+
+
+    @Click(R.id.commit)
+    protected void clickCommit(){
+        if( userInfo.id().get() != -1) {
+            if (fast_answer.getText().length() == 0) {
+                fast_answer.setError("请输入答案！");
+                return;
+            } else {
+                answerCommit();
+            }
+        }else{
+            Toast.makeText(this, "回答前请先登录！", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     * 快速回答
+     */
+    public void answerCommit(){
+        HttpClient.post(this, HttpUrl.POST_ONE_ANSWER, params, new BaseJsonHttpResponseHandler(this){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                Toast.makeText(getApplication(), "回答问题成功！", Toast.LENGTH_LONG).show();
+                layout_role.setVisibility(View.GONE);
+                fast_answer.setText("");
+                fast_answer.clearFocus();
+                getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Toast.makeText(getApplication(), "回答失败---" +statusCode, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

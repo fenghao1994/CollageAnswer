@@ -23,7 +23,7 @@ public interface UserInfo {
     int id();
 
     /**
-     *用户名称
+     *用户昵称
      * @return
      */
     String name();
@@ -43,6 +43,12 @@ public interface UserInfo {
      * 学号
      */
     String stuNumber();
+
+    /**
+     * 是否认证
+     */
+    @DefaultInt(-1)
+    int attest();
 
     /**
      * 用户登录令牌

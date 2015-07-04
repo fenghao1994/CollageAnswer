@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:orientation="vertical"
+    android:background="#DCDCDC"
+    >
+    <!--快速回答区域-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center_vertical"
+        >
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        class="com.rengwuxian.materialedittext.MaterialEditText"
+        android:id="@+id/fast_answer"
+        style="@style/input"
+        app:met_hideUnderline="true"
+        app:met_floatingLabel="normal"
+        app:met_floatingLabelText="点击输入你的答案"
+        android:hint="点击输入你的答案"
+        />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/commit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交"
+        android:layout_marginRight="7dp"
+        android:layout_gravity="center_vertical"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_role"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        >
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="2"
+            >
+            <RadioButton
+                android:id="@+id/username"
+                android:text="昵称"
+                android:checked="true"
+                android:layout_weight="0.5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:text="真名"
+                android:id="@+id/real_name"
+                android:layout_weight="0.5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+
+    </LinearLayout>
+</LinearLayout>

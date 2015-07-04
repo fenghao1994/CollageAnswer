@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="vertical"
     >
 
     <club.cqut.collageanswer.customview.HeadBackView_
@@ -11,10 +10,13 @@
     </club.cqut.collageanswer.customview.HeadBackView_>
 
     <LinearLayout
+        android:id="@+id/layout_answer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:padding="10dp"
+        android:layout_below="@id/headback"
         >
 
         <TextView
@@ -68,4 +70,10 @@
 
     </LinearLayout>
 
-</LinearLayout>
+    <include layout="@layout/layout_fast_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/layout_answer"
+        ></include>
+
+</RelativeLayout>
