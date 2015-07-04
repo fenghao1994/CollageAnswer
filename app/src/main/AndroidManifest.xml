@@ -97,6 +97,11 @@
             android:name=".activity.MyFocusActivity_"
             android:label="@string/title_activity_response" >
         </activity>
+
+        <activity
+            android:name=".activity.QuestionCommit_"
+            android:label="@string/title_activity_response" >
+        </activity>
     </application>
 
 </manifest>

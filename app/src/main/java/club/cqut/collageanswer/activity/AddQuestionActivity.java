@@ -2,8 +2,10 @@ package club.cqut.collageanswer.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.loopj.android.http.RequestParams;
@@ -50,17 +52,27 @@ public class AddQuestionActivity extends Activity{
     @Pref
     protected UserInfo_ userInfo;
 
+    ImageView imageView;
+
 
     @AfterViews
     protected void init(){
         view_head.setTitle("描述你的问题");
+        view_head.showRightButton();
+        view_head.setImageViewRightIconRes(R.mipmap.bootstrap_1);
+        imageView = view_head.getRightButton();
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickCommit();
+            }
+        });
     }
 
 
     /**
-     * 提交问题
+     * 下一步
      */
-    @Click(R.id.btn_commit)
     protected void clickCommit(){
         boolean flag = true;
 
@@ -81,37 +93,13 @@ public class AddQuestionActivity extends Activity{
         }
 
         if( flag){
-            commitQuestion();
+            Intent intent = new Intent(this, QuestionCommit_.class);
+            intent.putExtra("title", question_title.getText().toString());
+            intent.putExtra("content", question_content.getText().toString());
+            startActivity(intent);
         }
     }
 
-    public void commitQuestion(){
-
-        RequestParams params = new RequestParams();
-        params.put("user_id", userInfo.id().get());
-        params.put("content", question_content.getText());
-        params.put("title", question_title.getText().toString());
-        params.put("label", "");
-
-        HttpClient.post(this, HttpUrl.POST_ONE_QUESTION, params, new BaseJsonHttpResponseHandler(this){
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                Toast.makeText(getApplication(), "提交成功", Toast.LENGTH_LONG).show();
-                backActivity();
-            }
 
 
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                Toast.makeText(getApplication(), "提交失败--" + statusCode, Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-
-    /**
-     * 提交问题成功后回到
-     */
-    public void backActivity(){
-        this.finish();
-    }
 }
