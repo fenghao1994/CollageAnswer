@@ -59,6 +59,9 @@ public class BestHotQuestionFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Question question = adapter.list.get(position - 1);
+                params = new RequestParams();
+                params.put("answer_id", question.getId());
+                addReadNum();
                 Intent intent = new Intent(getActivity(), AllAnswerActivity_.class);
                 intent.putExtra("question", (Serializable)question);
                 startActivity(intent);
@@ -131,17 +134,32 @@ public class BestHotQuestionFragment extends Fragment {
                     adapter.addNewQuestion(questions);
                     adapter.notifyDataSetChanged();
                 } else {
-                    if(questions.size() == 0){
+                    if (questions.size() == 0) {
                         Toast.makeText(getActivity(), "没有更多数据！", Toast.LENGTH_LONG).show();
-                    }else{
+                    } else {
                         adapter.addOldQuestion(questions);
                         adapter.notifyDataSetChanged();
                     }
 
                 }
-
                 listview.onRefreshComplete();
+            }
+        });
+    }
 
+    /**
+     * 增加阅读量
+     */
+    public void addReadNum(){
+        HttpClient.get(getActivity(), HttpUrl.POST_READ_NUM, null, new BaseJsonHttpResponseHandler( getActivity()){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                Toast.makeText(getActivity(), "成功", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Toast.makeText(getActivity(), "失败--" + statusCode, Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -51,5 +51,10 @@ public class HttpUrl {
     //推荐问题
     public static final String GET_QUESTION = ROOT + "/front/questions/user_already_ask";
 
+    //点赞数
+    public static final String GET_READ_NUM = ROOT + "/front/answers/answers_praise_num?answer_id=";
+
+    //阅读量
+    public static final String POST_READ_NUM = ROOT + "";
 
 }

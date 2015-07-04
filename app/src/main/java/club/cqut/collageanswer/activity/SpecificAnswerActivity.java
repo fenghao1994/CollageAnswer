@@ -57,7 +57,6 @@ public class SpecificAnswerActivity extends Activity{
     Answer answer;
     boolean message;
 
-// TODO  访问网络 判断该用户是否可以进行点赞
     @AfterViews
     protected void init(){
         backview.setTitle("详细回答");
@@ -74,7 +73,8 @@ public class SpecificAnswerActivity extends Activity{
         prise_num.setText(answer.getPriseNum() + "");
         answer_content.setText(answer.getContext());
         showHeadImage(answer.getHeadImage());
-        sentPrise();
+        checkPrise();
+
     }
     @UiThread
     public void showHeadImage(String url){
@@ -94,7 +94,34 @@ public class SpecificAnswerActivity extends Activity{
 
     @Click(R.id.prise)
     protected void clickPrise(){
-        isAddPriseNum();
+        if( message){
+            sentPrise();
+        }
+    }
+
+    /**
+     * 判断是否可以进行点赞
+     */
+    public void checkPrise(){
+        RequestParams params = new RequestParams();
+        params.put("user_id", userInfo.id().get());
+        params.put("answer_id", answer.getId());
+        HttpClient.post(this, HttpUrl.POST_CHECK_PRISE, params, new BaseJsonHttpResponseHandler(this) {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                Map<String, Object> map = JacksonMapper.parse(responseString);
+                if(map.get("message").equals("yes")){
+                    message = true;
+                    prise.setImageResource(R.mipmap.raiseprise);
+                }else{
+                    message = false;
+                    prise.setImageResource(R.mipmap.pressprise);
+                }
+            }
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+            }
+        });
     }
     /**
      * 点赞后发送到服务器
@@ -109,31 +136,15 @@ public class SpecificAnswerActivity extends Activity{
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 Map<String, Object> map = JacksonMapper.parse(responseString);
                 if(map.containsValue("success")){
-                    prise.setImageResource(R.mipmap.raiseprise);
-                    message = true;
-                }else{
-                    message = false;
                     prise.setImageResource(R.mipmap.pressprise);
+                    prise_num.setText((Integer.parseInt(prise_num.getText().toString()) + 1) + "");
+                    Toast.makeText(getApplication(), "点赞成功", Toast.LENGTH_LONG).show();
                 }
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                Map<String, Object> map = JacksonMapper.parse(responseString);
-                message = false;
+                Toast.makeText(getApplication(), "未知错误--" + statusCode, Toast.LENGTH_LONG).show();
             }
         });
-    }
-
-    /**
-     * 是否进行
-     */
-    public void isAddPriseNum( ){
-        if ( message){
-            prise.setEnabled(true);
-            prise.setImageResource(R.mipmap.pressprise);
-            prise_num.setText( (answer.getPriseNum() + 1) + "" );
-        }else {
-            prise.setEnabled(false);
-        }
     }
 }
