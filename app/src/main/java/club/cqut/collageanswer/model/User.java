@@ -6,6 +6,7 @@ import com.j256.ormlite.table.DatabaseTable;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Date;
  */
 @JsonIgnoreProperties({"name", "created_at", "updated_at", "enable", "remark", "organization_id", "parent_id", "society_id"})
 @DatabaseTable(tableName = "users")
-public class User {
+public class User implements Serializable {
 
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_PHONE = "phone";
@@ -36,6 +37,7 @@ public class User {
     public static final String COLUMN_MAJOR = "major";//专业
     public static final String COLUMN_SUB_COLLAGE = "sub_collage";//学院
     public static final String COLUMN_TOKEN = "token";//登陆令牌
+    public static final String COLUMN_RANK = "rank";//排名
 
 
     @DatabaseField(id = true, columnName = COLUMN_ID)
@@ -90,6 +92,9 @@ public class User {
     @DatabaseField(columnName = COLUMN_TOKEN)
     @JsonProperty("authentication_token")
     private String token;
+    private String rank;
+    @JsonProperty("is_approve")
+    private String approve;
 
     public int getId() {
         return id;
@@ -249,5 +254,21 @@ public class User {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
+    public String getApprove() {
+        return approve;
+    }
+
+    public void setApprove(String approve) {
+        this.approve = approve;
     }
 }

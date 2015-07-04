@@ -8,9 +8,11 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.sharedpreferences.Pref;
 
 import club.cqut.collageanswer.R;
 import club.cqut.collageanswer.customview.HeadBackView;
+import club.cqut.collageanswer.preferences.UserInfo_;
 
 /**
  * 认证页面
@@ -23,19 +25,22 @@ public class AttestActivity extends Activity{
     protected HeadBackView view_head;
     @ViewById
     protected ImageView email_attest, friends_attest, manager_attest;
+    @Pref
+    protected UserInfo_ userInfo;
 
     @AfterViews
     public void init(){
-
+        view_head.setTitle("认证选择");
     }
 
     /**
      *跳转到邮箱认证
      */
     @Click(R.id.email_attest)
-    protected void goEmailAttest(){
-        Intent intent = new Intent(this, EmailAttestActivity_.class);
-        startActivity(intent);
+    protected void goEmailAttest() {
+
+            Intent intent = new Intent(this, EmailAttestActivity_.class);
+            startActivity(intent);
     }
 
     /**

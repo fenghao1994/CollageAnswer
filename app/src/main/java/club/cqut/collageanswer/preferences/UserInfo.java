@@ -54,7 +54,13 @@ public interface UserInfo {
      * 用户登录令牌
      * @return
      */
+
     String token();
+
+    /**
+     * 是否被认证
+     */
+    String approve();
 
     /**
      * 是否显示启动页

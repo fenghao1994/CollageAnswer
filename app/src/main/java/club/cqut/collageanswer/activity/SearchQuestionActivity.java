@@ -161,7 +161,6 @@ public class SearchQuestionActivity extends Activity{
         }
         params = new RequestParams();
         params.put("title", search_question.getText());
-        params.put("page", page);
         searchQuestion();
     }
 
@@ -173,7 +172,12 @@ public class SearchQuestionActivity extends Activity{
                 });
                 page = headers[8].getValue();
                 if (type == REFRESH) {
-                    adapter.addNewQuestion(questions);
+                    if(questions.size() == 0){
+                        Toast.makeText(getApplication(), "暂未搜到与关键相关的问题", Toast.LENGTH_LONG).show();
+                    }else{
+                        adapter.addNewQuestion(questions);
+                    }
+
                 } else {
                     if(questions.size() == 0){
                         Toast.makeText(getApplication(), "没有更多数据！", Toast.LENGTH_LONG).show();

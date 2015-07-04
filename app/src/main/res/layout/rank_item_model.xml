@@ -14,17 +14,32 @@
         android:padding="10dp"
         >
 
-        <ImageView
+
+        <RelativeLayout
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:paddingLeft="20dp"
-            android:id="@+id/sort_num"
-            android:src="@mipmap/bootstrap_1"/>
-        
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/sort_bg"
+                android:src="@mipmap/rank_bg"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="1"
+                android:textSize="30dp"
+                android:id="@+id/rank_num"/>
+
+        </RelativeLayout>
+
         <club.cqut.collageanswer.RoungImage.CircleImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="30dp"
             android:id="@+id/rank_cover"
             android:src="@mipmap/bootstrap_2"/>
 

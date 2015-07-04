@@ -3,6 +3,7 @@ package club.cqut.collageanswer.activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -14,11 +15,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.loopj.android.http.RequestParams;
+
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
+import org.apache.http.Header;
 
 import club.cqut.collageanswer.R;
 import club.cqut.collageanswer.fragment.MineFragment_;
@@ -27,7 +31,12 @@ import club.cqut.collageanswer.fragment.QuestionFragment_;
 import club.cqut.collageanswer.fragment.RankFragment_;
 import club.cqut.collageanswer.fragment.RecommendFragment;
 import club.cqut.collageanswer.fragment.RecommendFragment_;
+import club.cqut.collageanswer.model.User;
 import club.cqut.collageanswer.preferences.UserInfo_;
+import club.cqut.collageanswer.util.http.BaseJsonHttpResponseHandler;
+import club.cqut.collageanswer.util.http.HttpClient;
+import club.cqut.collageanswer.util.http.HttpUrl;
+import club.cqut.collageanswer.util.http.JacksonMapper;
 
 @EActivity(R.layout.activity_home)
 public class HomeActivity extends FragmentActivity implements View.OnClickListener{
@@ -70,6 +79,7 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
         activity_title.setOnClickListener(this);
         add_question.setOnClickListener(this);
         chioceFragment(0);
+
     }
 
     /**
@@ -261,5 +271,7 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
         }
         return false;
     }
+
+
 
 }

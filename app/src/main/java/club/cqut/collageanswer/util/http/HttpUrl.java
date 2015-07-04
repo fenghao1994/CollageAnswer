@@ -19,7 +19,7 @@ public class HttpUrl {
     public static final String GET_NEW_QUESTION = ROOT + "/front/questions";
 
     //获取最热问题
-    public static final String GET_HOT_QUESTION = ROOT + "/front/question_hottest";
+    public static final String GET_HOT_QUESTION = ROOT + "/front/questions/question_hottest";
 
     //获得一个问题的所有答案
     public static final String GET_ALL_ANSWERS = ROOT + "/front/answers?question_id=";
@@ -51,10 +51,5 @@ public class HttpUrl {
     //推荐问题
     public static final String GET_QUESTION = ROOT + "/front/questions/user_already_ask";
 
-    //点赞数
-    public static final String GET_READ_NUM = ROOT + "/front/answers/answers_praise_num?answer_id=";
-
-    //阅读量
-    public static final String POST_READ_NUM = ROOT + "";
 
 }

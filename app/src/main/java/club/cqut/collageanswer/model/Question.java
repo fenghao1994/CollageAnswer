@@ -9,7 +9,7 @@ import java.io.Serializable;
  * 问题实体
  * Created by fenghao on 2015/6/28.
  */
-@JsonIgnoreProperties({"created_at", "updated_at"})
+@JsonIgnoreProperties({"created_at", "updated_at", "avatar_file_name","avatar_content_type","avatar_file_size", "avatar_updated_at"})
 public class Question implements Serializable{
 
 

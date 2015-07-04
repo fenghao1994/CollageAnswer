@@ -62,7 +62,6 @@ public class RankFragment extends Fragment{
             public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
                 type = REFRESH;
                 params = new RequestParams();
-                params.put("type", type);
                 refresh();
             }
 
@@ -105,7 +104,6 @@ public class RankFragment extends Fragment{
         //第一次进来的时候直接进行刷新
         params = new RequestParams();
         type = REFRESH;
-        params.put("type", type);
         refresh();
     }
 
@@ -114,7 +112,7 @@ public class RankFragment extends Fragment{
      */
     public void refresh(){
 
-        HttpClient.get(getActivity(), HttpUrl.GET_NEW_QUESTION, params, new BaseJsonHttpResponseHandler(getActivity()) {
+        HttpClient.get(getActivity(), HttpUrl.GET_RANK, params, new BaseJsonHttpResponseHandler(getActivity()) {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 Toast.makeText(getActivity(), "错误--" + statusCode, Toast.LENGTH_LONG).show();
@@ -125,13 +123,21 @@ public class RankFragment extends Fragment{
                 List<User> users = JacksonMapper.parseToList(responseString, new TypeReference<List<User>>() {
                 });
 
+                page = headers[8].getValue();
                 if (type == REFRESH) {
-//                    adapter.addNewQuestion(users);
+                    adapter.addNewUser(users);
+                    adapter.notifyDataSetChanged();
                 } else {
-//                    adapter.addOldQuestion(users);
+                    if (users.size() == 0) {
+                        Toast.makeText(getActivity(), "没有更多数据！", Toast.LENGTH_LONG).show();
+                    }else{
+                        adapter.addOldUser(users);
+                        adapter.notifyDataSetChanged();
+                    }
                 }
-                adapter.notifyDataSetChanged();
+
                 listview.onRefreshComplete();
+
             }
         });
     }

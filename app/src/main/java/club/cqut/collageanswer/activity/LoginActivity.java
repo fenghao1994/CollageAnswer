@@ -148,7 +148,23 @@ public class LoginActivity extends Activity {
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
 
                 User user = JacksonMapper.parse(responseString, User.class);
+                if(user.getApprove() != null && !user.getApprove().equals("")){
+                    userInfo.approve().put(user.getApprove());
+                }else{
+                    userInfo.approve().put("");
+                }
+                if(user.getRealname() != null && !user.getRealname().equals("")){
+                    userInfo.realName().put(user.getRealname());
+                }else{
+                    userInfo.realName().put("");
+                }
+                if(user.getStuNum() != null &&  !user.getStuNum().equals("")){
+                    userInfo.stuNumber().put(user.getStuNum());
+                }else{
+                    userInfo.stuNumber().put("");
+                }
                 userInfo.edit().id().put(user.getId()).name().put(user.getUsername()).email().put(user.getEmail()).token().put(user.getToken()).apply();
+
                 HttpClient.resetAuth(user.getToken());
                 skipActivity();
                 Toast.makeText(getApplication(), "登陆成功", Toast.LENGTH_LONG).show();

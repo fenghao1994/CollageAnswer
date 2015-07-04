@@ -16,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="gone"
             >
 
     <LinearLayout
@@ -289,6 +288,14 @@
                 android:layout_height="45dp"
                 android:layout_marginTop="20dp"
                 android:id="@+id/my_friends"
+                android:visibility="gone"
+                android:src="@drawable/btn_login"/>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/load_out"
                 android:src="@drawable/btn_login"/>
 
         </LinearLayout>

@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import club.cqut.collageanswer.R;
-import club.cqut.collageanswer.RoungImage.CircleImageView;
 import club.cqut.collageanswer.model.User;
 
 /**
@@ -29,6 +28,7 @@ public class RankItemAdapter extends BaseAdapter {
     static class ViewHolder{
         ImageView sortImage;
         ImageView headImage;
+        TextView sortNum;
         TextView username;
         TextView sex;
     }
@@ -39,6 +39,7 @@ public class RankItemAdapter extends BaseAdapter {
 
     // DisplayImageOptions的初始化
     DisplayImageOptions options = new DisplayImageOptions.Builder()
+            .showImageForEmptyUri(R.mipmap.bootstrap_1)
             .showImageOnLoading(R.mipmap.bootstrap_1)
             .showImageOnFail(R.mipmap.ic_launcher)
             .cacheInMemory(true)
@@ -49,6 +50,29 @@ public class RankItemAdapter extends BaseAdapter {
     public RankItemAdapter(Context context){
         this.context = context;
         this.inflater = LayoutInflater.from(context);
+    }
+
+    public List<User> getList() {
+        return list;
+    }
+
+    public void setList(List<User> list) {
+        this.list = list;
+    }
+
+    /**
+     * 得到最新数据往list里面添加
+     */
+    public void addNewUser(List<User> users){
+        list.clear();
+        list.addAll( users);
+    }
+
+    /**
+     * 加载更多的时候往list的最后加数据
+     */
+    public void addOldUser(List<User> users){
+        list.addAll(list.size(), users);
     }
 
     @Override
@@ -72,9 +96,10 @@ public class RankItemAdapter extends BaseAdapter {
         ViewHolder holder = null;
         if(convertView == null){
             holder = new ViewHolder();
-            convertView = inflater.inflate(R.layout.layout_item_question_model, null);
-            holder.sortImage = (ImageView) convertView.findViewById(R.id.sort_num);
+            convertView = inflater.inflate(R.layout.rank_item_model, null);
+            holder.sortImage = (ImageView) convertView.findViewById(R.id.sort_bg);
             holder.headImage = (ImageView) convertView.findViewById(R.id.rank_cover);
+            holder.sortNum = (TextView) convertView.findViewById(R.id.rank_num);
             holder.username = (TextView) convertView.findViewById(R.id.rank_name);
             holder.sex = (TextView) convertView.findViewById(R.id.rank_sex);
             convertView.setTag(holder);
@@ -84,14 +109,20 @@ public class RankItemAdapter extends BaseAdapter {
 
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(context));
-        imageLoader.displayImage("http://sc.admin5.com/uploads/allimg/100202/1455521K2-2.png", holder.sortImage, options);
         imageLoader.displayImage(list.get(position).getHeadImage(), holder.headImage, options);
 
+        holder.sortNum.setText(position + 1+ "");
         holder.username.setText(list.get(position).getUsername());
-        if(list.get(position).getSex()){
-            holder.sex.setText("男");
+
+//        holder.sex.setText("男");
+        if(list.get(position).getSex() == null){
+            holder.sex.setText("");
         } else {
-            holder.sex.setText("女");
+            if (list.get(position).getSex() == true) {
+                holder.sex.setText("男");
+            } else {
+                holder.sex.setText("女");
+            }
         }
 
         return convertView;
