@@ -31,6 +31,7 @@ import club.cqut.collageanswer.fragment.QuestionFragment_;
 import club.cqut.collageanswer.fragment.RankFragment_;
 import club.cqut.collageanswer.fragment.RecommendFragment;
 import club.cqut.collageanswer.fragment.RecommendFragment_;
+import club.cqut.collageanswer.model.Notice;
 import club.cqut.collageanswer.model.User;
 import club.cqut.collageanswer.preferences.UserInfo_;
 import club.cqut.collageanswer.util.http.BaseJsonHttpResponseHandler;
@@ -252,15 +253,16 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
      */
     @Click(R.id.attest)
     protected void goAttest(){
-
-        if (userInfo.realName().get() != null && !userInfo.realName().get().equals("")
+        /*if (userInfo.realName().get() != null && !userInfo.realName().get().equals("")
                 && userInfo.stuNumber().get() != null && !userInfo.stuNumber().equals("") ){
             Intent intent = new Intent(this, AttestActivity_.class);
             startActivity(intent);
         }else{
             Intent intent = new Intent(this, AttestEditActivity_.class);
             startActivity(intent);
-        }
+        }*/
+        Intent intent = new Intent(this, NoticeActivity_.class);
+        startActivity(intent);
     }
 
 

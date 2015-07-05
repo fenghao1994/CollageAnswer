@@ -135,7 +135,7 @@ public class AllAnswerActivity extends Activity {
         fast_answer.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
+                if (hasFocus && userInfo.realName().get() != null && !userInfo.realName().get().equals("")) {
                     layout_role.setVisibility(View.VISIBLE);
                 } else {
                     layout_role.setVisibility(View.GONE);
@@ -229,6 +229,16 @@ public class AllAnswerActivity extends Activity {
                 fast_answer.setError("请输入答案！");
                 return;
             } else {
+                params = new RequestParams();
+                params.put("content", fast_answer.getText());
+                params.put("praise_num", 0);
+                params.put("user_id", userInfo.id().get());
+                if( username.isChecked()){
+                    params.put("user_role", userInfo.name().get());
+                }else{
+                    params.put("user_role", userInfo.realName().get());
+                }
+                params.put("question_id", question.getId());
                 answerCommit();
             }
         }else{

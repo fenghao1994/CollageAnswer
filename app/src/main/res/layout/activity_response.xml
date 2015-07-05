@@ -11,6 +11,44 @@
         android:layout_alignParentTop="true"
         android:id="@+id/view_head" />
 
+
+    <LinearLayout
+        android:background="#FAFAD2"
+        android:id="@+id/layout_role"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="请选择你要进行回答的身份："
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="2"
+            >
+            <RadioButton
+                android:id="@+id/username"
+                android:text="昵称"
+                android:checked="true"
+                android:layout_weight="0.5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <RadioButton
+                android:text="真名"
+                android:id="@+id/real_name"
+                android:layout_weight="0.5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+    </LinearLayout>
+
     <EditText
         android:id="@+id/answer_content"
         android:layout_width="match_parent"
@@ -20,16 +58,6 @@
         android:layout_below="@+id/view_head"
         android:hint="内容"
         android:gravity="top|left"
-        />
-
-    <Button
-        android:id="@+id/btn_commit"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="提交"
-        android:textSize="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/answer_content"
         />
 
 </LinearLayout>

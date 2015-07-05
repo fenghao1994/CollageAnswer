@@ -178,7 +178,7 @@ public class SignUpActivity extends Activity {
         params.put("username", editText_username.getText().toString());
         params.put("email", editText_account.getText().toString());
         params.put("password", editText_password.getText().toString());
-        params.put("province", province);
+        params.put("fellow_name", province);
 
         HttpClient.post(this, HttpUrl.POST_SIGN_UP, params, new BaseJsonHttpResponseHandler(this) {
             @Override

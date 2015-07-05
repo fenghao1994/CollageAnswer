@@ -102,6 +102,16 @@
             android:name=".activity.QuestionCommit_"
             android:label="@string/title_activity_response" >
         </activity>
+
+        <activity
+            android:name=".activity.NoticeActivity_"
+            android:label="@string/title_activity_response" >
+        </activity>
+
+        <activity
+            android:name=".activity.SpecificNoticeActivity_"
+            android:label="@string/title_activity_response" >
+        </activity>
     </application>
 
 </manifest>

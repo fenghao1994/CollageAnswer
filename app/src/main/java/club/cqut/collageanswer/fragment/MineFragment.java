@@ -95,6 +95,7 @@ public class MineFragment extends Fragment {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 userInfo.edit().name().put("").email().put("").stuNumber().put("").id().put(-1).realName().put("").token().put("").apply();
+                Toast.makeText(getActivity(), "退出成功", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getActivity(), HomeActivity_.class);
                 startActivity(intent);
             }
