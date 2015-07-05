@@ -36,8 +36,8 @@ public class QuestionFragment extends Fragment{
         list.add(bestNewQuestionFragment);
         list.add(bestHotQuestionFragment);
 
-        MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getActivity(), tabs, question_viewpager);
-        adapter.setOffscreenPageLimit(1);
+        MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getActivity(), getChildFragmentManager(), tabs, question_viewpager);
+        adapter.setOffscreenPageLimit(2);
         adapter.addTab("最新问题", bestNewQuestionFragment);
         adapter.addTab("最热问题", bestHotQuestionFragment);
 

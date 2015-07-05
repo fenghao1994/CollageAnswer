@@ -27,8 +27,16 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter{
     private final ArrayList<Fragment> mFragments;
     private final Context context;
 
-    public MyFragmentPagerAdapter(FragmentActivity activity, PagerSlidingTabStrip tabStrip, ViewPager pager) {
-        super(activity.getSupportFragmentManager());
+    /**
+     * 因为不流畅的问题  将getSupperManagerFragment变成getChild。。。
+     * @param activity
+     * @param fm
+     * @param tabStrip
+     * @param pager
+     */
+
+    public MyFragmentPagerAdapter(Context activity ,FragmentManager fm, PagerSlidingTabStrip tabStrip, ViewPager pager) {
+        super(fm);
         titles = new ArrayList<CharSequence>();
         mFragments = new ArrayList<Fragment>();
         mTabStrip = tabStrip;
