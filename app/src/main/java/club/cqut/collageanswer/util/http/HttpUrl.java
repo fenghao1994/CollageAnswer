@@ -51,5 +51,26 @@ public class HttpUrl {
     //推荐问题
     public static final String GET_QUESTION = ROOT + "/front/questions/user_already_ask";
 
+    //点赞数
+    public static final String GET_READ_NUM = ROOT + "/front/answers/answers_praise_num?answer_id=";
+
+    //阅读量
+    public static final String POST_READ_NUM = ROOT + "/front/questions/add_read_num";
+
+    //邮箱认证
+    public static final String GET_EMAIL_APPROVE = ROOT + "/front/users/school_email_approve";
+
+    //排序
+    public static final String GET_RANK = ROOT + "/front/users/get_total_rank";
+
+    //退出登陆
+    public static final String POST_LOGIN_OUT = ROOT + "/front/users/sign_out_for_web";
+
+    //得到当前用户
+    public static final String GET_CURRENT_USER = ROOT + "/front/users/current";
+
+    //用户认证
+    public static final String POST_USER_APPROVE = ROOT + "/front/users/user_approve";
+
 
 }
