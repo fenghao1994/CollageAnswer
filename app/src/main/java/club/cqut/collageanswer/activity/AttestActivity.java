@@ -48,8 +48,8 @@ public class AttestActivity extends Activity{
      */
     @Click(R.id.friends_attest)
     protected void goFriendAttest(){
-        Intent intent = new Intent(this, FriendsAttestActivity_.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, FriendsAttestActivity_.class);
+//        startActivity(intent);
     }
 
     /**
