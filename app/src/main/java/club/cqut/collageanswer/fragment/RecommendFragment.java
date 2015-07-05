@@ -125,7 +125,7 @@ public class RecommendFragment extends Fragment {
      */
     public void refresh(){
 
-        HttpClient.get(getActivity(), HttpUrl.GET_HOT_QUESTION, params, new BaseJsonHttpResponseHandler(getActivity()) {
+        HttpClient.get(getActivity(), HttpUrl.GET_RECOMMMENT, params, new BaseJsonHttpResponseHandler(getActivity()) {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 Toast.makeText(getActivity(), "错误--" + statusCode, Toast.LENGTH_LONG).show();
