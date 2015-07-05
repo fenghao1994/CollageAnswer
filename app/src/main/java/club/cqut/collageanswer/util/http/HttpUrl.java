@@ -72,5 +72,6 @@ public class HttpUrl {
     //用户认证
     public static final String POST_USER_APPROVE = ROOT + "/front/users/user_approve";
 
-
+    //编辑个人资料
+    public static final String POST_USER_INFO = ROOT + "/front/users/update_only_three_info";
 }

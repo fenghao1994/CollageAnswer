@@ -80,6 +80,22 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
         add_question.setOnClickListener(this);
         chioceFragment(0);
 
+        /**
+         * 编辑信息后返回到mineFragment
+         */
+        Intent intent = getIntent();
+        int fragmentId = intent.getIntExtra("mine",-1);
+        if(fragmentId > 0){
+            if(fragmentId == 4){
+                chioceFragment(3);
+                layout_search.setVisibility(View.GONE);
+                layout_title.setVisibility(View.VISIBLE);
+                edit.setVisibility(View.VISIBLE);
+                attest.setVisibility(View.VISIBLE);
+                activity_title.setText("我的信息");
+            }
+        }
+
     }
 
     /**
@@ -221,12 +237,19 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
     }
 
 
+    /**
+     * 跳转到个人信息编辑
+     */
     @Click(R.id.edit)
     protected void goEdit(){
         Intent intent = new Intent(this, EditActivity_.class);
         startActivity(intent);
     }
 
+
+    /**
+     * 跳转到认证页面
+     */
     @Click(R.id.attest)
     protected void goAttest(){
 

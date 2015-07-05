@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="vertical">
+    >
 
     <view
         android:layout_width="match_parent"
@@ -14,8 +14,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/view_head"
+        android:id="@+id/linearLayout">
 
         <TextView
             android:layout_width="0dp"
@@ -31,6 +33,7 @@
             android:layout_weight="2"
             android:layout_marginLeft="20dp"
             android:hint="输入昵称"
+            android:id="@+id/name"
             />
 
     </LinearLayout>
@@ -39,33 +42,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="20dp"
-            android:paddingLeft="20dp"
-            android:text="年龄"/>
-
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_marginLeft="20dp"
-            android:hint="请输入"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/linearLayout"
+        android:id="@+id/linearLayout1">
 
         <TextView
             android:layout_width="0dp"
@@ -81,6 +61,7 @@
             android:layout_weight="2"
             android:layout_marginLeft="20dp"
             android:hint="请输入"
+            android:id="@+id/hobby"
             />
 
     </LinearLayout>
@@ -89,8 +70,10 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/linearLayout1"
+        android:id="@+id/linearLayout2">
 
         <TextView
             android:layout_width="0dp"
@@ -106,6 +89,7 @@
             android:layout_weight="2"
             android:layout_marginLeft="20dp"
             android:hint="请输入"
+            android:id="@+id/sinal"
             />
 
     </LinearLayout>
@@ -113,10 +97,10 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
         android:src="@drawable/btn_login"
-        android:id="@+id/save"/>
+        android:id="@+id/save"
+        android:layout_margin="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
-</LinearLayout>
+</RelativeLayout>

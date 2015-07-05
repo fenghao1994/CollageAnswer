@@ -47,6 +47,8 @@ public class MineFragment extends Fragment {
     protected LinearLayout mine_layout;
     @ViewById
     protected HeadBackView view_head;
+    @ViewById
+    protected TextView my_info_name, my_info_sex, email, sinal, real_name, student_no, fellow, hobby;
 
     @Pref
     protected UserInfo_ userInfo;
@@ -106,6 +108,14 @@ public class MineFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getCurrentUser();
+    }
+
+
+
     /**
      * 得到当前用户的信息
      */
@@ -136,6 +146,21 @@ public class MineFragment extends Fragment {
                     userInfo.stuNumber().put("");
                 }
                 userInfo.edit().id().put(user.getId()).name().put(user.getUsername()).email().put(user.getEmail()).token().put(user.getToken()).apply();
+
+                //信息填写
+                my_info_name.setText(user.getUsername());
+                if(user.getSex()){
+                    my_info_sex.setText("男");
+                } else {
+                    my_info_sex.setText("女");
+                }
+                email.setText(user.getEmail());
+                sinal.setText(user.getUserSign());
+                real_name.setText(user.getRealname());
+                student_no.setText(user.getStuNum());
+                fellow.setText(user.getFellow());
+                hobby.setText(user.getHobby());
+
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
