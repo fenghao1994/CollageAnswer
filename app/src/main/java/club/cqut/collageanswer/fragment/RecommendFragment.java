@@ -62,6 +62,9 @@ public class RecommendFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Question question = adapter.list.get(position - 1);
+                params = new RequestParams();
+                params.put("question_id", question.getId());
+                addReadNum();
                 Intent intent = new Intent(getActivity(), AllAnswerActivity_.class);
                 intent.putExtra("question", (Serializable)question);
                 startActivity(intent);
@@ -150,6 +153,20 @@ public class RecommendFragment extends Fragment {
 
                 listview.onRefreshComplete();
 
+            }
+        });
+    }
+    /**
+     * 增加阅读量
+     */
+    public void addReadNum(){
+        HttpClient.get(getActivity(), HttpUrl.POST_READ_NUM, params, new BaseJsonHttpResponseHandler( getActivity()){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
             }
         });
     }

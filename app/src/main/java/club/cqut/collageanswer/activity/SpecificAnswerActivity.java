@@ -94,8 +94,13 @@ public class SpecificAnswerActivity extends Activity{
 
     @Click(R.id.prise)
     protected void clickPrise(){
-        if( message){
-            sentPrise();
+
+        if( userInfo.id().get() != -1){
+            if( message){
+                sentPrise();
+            }
+        }else{
+            Toast.makeText(this, "你没有登陆,无法进行点赞", Toast.LENGTH_LONG).show();
         }
     }
 

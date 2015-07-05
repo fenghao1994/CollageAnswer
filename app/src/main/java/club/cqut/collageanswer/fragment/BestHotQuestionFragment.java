@@ -60,7 +60,7 @@ public class BestHotQuestionFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Question question = adapter.list.get(position - 1);
                 params = new RequestParams();
-                params.put("answer_id", question.getId());
+                params.put("question_id", question.getId());
                 addReadNum();
                 Intent intent = new Intent(getActivity(), AllAnswerActivity_.class);
                 intent.putExtra("question", (Serializable)question);
@@ -140,7 +140,6 @@ public class BestHotQuestionFragment extends Fragment {
                         adapter.addOldQuestion(questions);
                         adapter.notifyDataSetChanged();
                     }
-
                 }
                 listview.onRefreshComplete();
             }
@@ -151,15 +150,13 @@ public class BestHotQuestionFragment extends Fragment {
      * 增加阅读量
      */
     public void addReadNum(){
-        HttpClient.get(getActivity(), HttpUrl.POST_READ_NUM, null, new BaseJsonHttpResponseHandler( getActivity()){
+        HttpClient.get(getActivity(), HttpUrl.POST_READ_NUM, params, new BaseJsonHttpResponseHandler( getActivity()){
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
-                Toast.makeText(getActivity(), "成功", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                Toast.makeText(getActivity(), "失败--" + statusCode, Toast.LENGTH_LONG).show();
             }
         });
     }

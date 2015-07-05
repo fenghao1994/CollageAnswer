@@ -204,8 +204,14 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
                 activity_title.setText("推荐");
                 break;
             case R.id.add_question:
-                Intent intent = new Intent(this, AddQuestionActivity_.class);
-                startActivity(intent);
+                if( userInfo.id().get() != -1){
+                    Intent intent = new Intent(this, AddQuestionActivity_.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(this, "登陆后才可以提问！", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(this, LoginActivity_.class);
+                    startActivity(intent);
+                }
                 break;
             case R.id.layout_rank:
                 chioceFragment(2);
@@ -253,14 +259,6 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
      */
     @Click(R.id.attest)
     protected void goAttest(){
-        /*if (userInfo.realName().get() != null && !userInfo.realName().get().equals("")
-                && userInfo.stuNumber().get() != null && !userInfo.stuNumber().equals("") ){
-            Intent intent = new Intent(this, AttestActivity_.class);
-            startActivity(intent);
-        }else{
-            Intent intent = new Intent(this, AttestEditActivity_.class);
-            startActivity(intent);
-        }*/
         Intent intent = new Intent(this, NoticeActivity_.class);
         startActivity(intent);
     }

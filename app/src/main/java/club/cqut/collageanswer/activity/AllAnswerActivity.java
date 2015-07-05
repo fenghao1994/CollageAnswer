@@ -77,7 +77,7 @@ public class AllAnswerActivity extends Activity {
 
     @AfterViews
     protected void init(){
-        headback.setTitle("详细");
+        headback.setTitle("所有答案");
         Intent  intent = getIntent();
         question  = (Question) intent.getSerializableExtra("question");
         String label = splitLabel(question);
@@ -243,6 +243,9 @@ public class AllAnswerActivity extends Activity {
             }
         }else{
             Toast.makeText(this, "回答前请先登录！", Toast.LENGTH_LONG).show();
+            fast_answer.setText("");
+            Intent intent = new Intent(this, LoginActivity_.class);
+            startActivity(intent);
         }
     }
 
@@ -250,10 +253,11 @@ public class AllAnswerActivity extends Activity {
      * 快速回答
      */
     public void answerCommit(){
-        HttpClient.post(this, HttpUrl.POST_ONE_ANSWER, params, new BaseJsonHttpResponseHandler(this){
+        HttpClient.post(this, HttpUrl.POST_ONE_ANSWER, params, new BaseJsonHttpResponseHandler(this) {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 Toast.makeText(getApplication(), "回答问题成功！", Toast.LENGTH_LONG).show();
+                refresh();
                 layout_role.setVisibility(View.GONE);
                 fast_answer.setText("");
                 fast_answer.clearFocus();
@@ -262,8 +266,14 @@ public class AllAnswerActivity extends Activity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                Toast.makeText(getApplication(), "回答失败---" +statusCode, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplication(), "回答失败---" + statusCode, Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        firstIn();
     }
 }

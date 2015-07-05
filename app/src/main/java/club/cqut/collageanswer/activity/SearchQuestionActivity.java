@@ -99,6 +99,9 @@ public class SearchQuestionActivity extends Activity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Question question = adapter.list.get(position - 1);
+                params = new RequestParams();
+                params.put("question_id", question.getId());
+                addReadNum();
                 Intent intent = new Intent(getApplication(), AllAnswerActivity_.class);
                 intent.putExtra("question", (Serializable) question);
                 startActivity(intent);
@@ -165,27 +168,42 @@ public class SearchQuestionActivity extends Activity{
     }
 
     public void searchQuestion(){
-        HttpClient.post(this, HttpUrl.POST_SEARCH_QUESTION, params, new BaseJsonHttpResponseHandler(this){
+        HttpClient.post(this, HttpUrl.POST_SEARCH_QUESTION, params, new BaseJsonHttpResponseHandler(this) {
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 List<Question> questions = JacksonMapper.parseToList(responseString, new TypeReference<List<Question>>() {
                 });
                 page = headers[8].getValue();
                 if (type == REFRESH) {
-                    if(questions.size() == 0){
+                    if (questions.size() == 0) {
                         Toast.makeText(getApplication(), "暂未搜到与关键相关的问题", Toast.LENGTH_LONG).show();
-                    }else{
+                    } else {
                         adapter.addNewQuestion(questions);
                     }
 
                 } else {
-                    if(questions.size() == 0){
+                    if (questions.size() == 0) {
                         Toast.makeText(getApplication(), "没有更多数据！", Toast.LENGTH_LONG).show();
                     }
                     adapter.addOldQuestion(questions);
                 }
                 adapter.notifyDataSetChanged();
                 listview.onRefreshComplete();
+            }
+        });
+    }
+
+    /**
+     * 增加阅读量
+     */
+    public void addReadNum(){
+        HttpClient.get(this, HttpUrl.POST_READ_NUM, params, new BaseJsonHttpResponseHandler(this ) {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String responseString) {
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
             }
         });
     }

@@ -3,6 +3,7 @@ package club.cqut.collageanswer.activity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.preference.DialogPreference;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -110,6 +111,8 @@ public class EmailAttestActivity extends Activity{
             @Override
             public void onSuccess(int statusCode, Header[] headers, String responseString) {
                 Toast.makeText(getApplication(), "邮箱已提交", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplication(), HomeActivity_.class);
+                startActivity(intent.putExtra("mine",4));
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {

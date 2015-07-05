@@ -64,6 +64,12 @@ public class ResponseActivity extends Activity {
             }
         });
         params = new RequestParams();
+
+        if (userInfo.realName().get() != null && !userInfo.realName().get().equals("")){
+            layout_role.setVisibility(View.VISIBLE);
+        }else{
+            layout_role.setVisibility(View.GONE);
+        }
     }
 
 

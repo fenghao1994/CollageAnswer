@@ -63,7 +63,7 @@ public class MyAnswerActivity extends Activity {
         listview.setMode(PullToRefreshBase.Mode.BOTH);
         initListView();
 
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      /*  listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 QuestionAnswer question = adapter.list.get(position - 1);
@@ -71,7 +71,7 @@ public class MyAnswerActivity extends Activity {
                 intent.putExtra("question", (Serializable)question);
                 startActivity(intent);
             }
-        });
+        });*/
 
         listview.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
             //下拉刷新
