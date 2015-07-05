@@ -77,7 +77,7 @@ public class MineFragment extends Fragment {
         startActivity(intent);
     }
 
-    @Click(R.id.my_answer)
+    @ Click(R.id.my_answer)
     protected void goMyAnswer(){
         Intent intent = new Intent(getActivity(), MyAnswerActivity_.class);
         startActivity(intent);
