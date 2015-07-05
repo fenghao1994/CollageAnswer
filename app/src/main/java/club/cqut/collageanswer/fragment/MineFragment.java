@@ -155,12 +155,42 @@ public class MineFragment extends Fragment {
                 } else {
                     my_info_sex.setText("女");
                 }
-                email.setText(user.getEmail());
-                sinal.setText(user.getUserSign());
-                real_name.setText(user.getRealname());
-                student_no.setText(user.getStuNum());
-                fellow.setText(user.getFellow());
-                hobby.setText(user.getHobby());
+
+                if(user.getEmail() == null || user.getEmail() == ""){
+                    email.setText("暂无数据");
+                } else {
+                    email.setText(user.getEmail());
+                }
+
+                if(user.getUserSign() == null || user.getUserSign() == "") {
+                    sinal.setText("暂无数据");
+                } else {
+                    sinal.setText(user.getUserSign());
+                }
+
+                if(user.getRealname() == null || user.getRealname() == "") {
+                    real_name.setText("暂无数据");
+                } else {
+                    real_name.setText(user.getRealname());
+                }
+
+                if(user.getStuNum() == null || user.getStuNum() == "") {
+                    student_no.setText("暂无数据");
+                } else {
+                    student_no.setText(user.getStuNum());
+                }
+
+                if(user.getFellow() == null || user.getFellow() == "") {
+                    fellow.setText("暂无数据");
+                } else {
+                    fellow.setText(user.getFellow());
+                }
+
+                if(user.getHobby() == null || user.getHobby() == "") {
+                    hobby.setText("暂无数据");
+                } else {
+                    hobby.setText(user.getHobby());
+                }
 
             }
             @Override

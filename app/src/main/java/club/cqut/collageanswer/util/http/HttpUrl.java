@@ -75,7 +75,6 @@ public class HttpUrl {
     //通知
     public static final String POST_ALL_NOTICE = ROOT + "/front/notices";
 
-
     //编辑个人资料
-    public static final String POST_USER_INFO = ROOT + "/front/users/update_only_three_info";
+    public static final String POST_USER_INFO = ROOT + "/front/users/update_only_four_info";
 }

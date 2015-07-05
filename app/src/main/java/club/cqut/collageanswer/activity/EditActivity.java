@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.loopj.android.http.RequestParams;
@@ -36,6 +38,11 @@ public class EditActivity extends Activity{
     @ViewById
     protected EditText name, hobby, sinal;
 
+    @ViewById
+    protected RadioGroup sex;
+    @ViewById
+    protected RadioButton male, female;
+
     @Pref
     protected UserInfo_ userInfo;
 
@@ -55,6 +62,17 @@ public class EditActivity extends Activity{
         user.setHobby(hobby.getText().toString());
         user.setUserSign(sinal.getText().toString());
 
+        sex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == male.getId()){
+                    user.setSex(true);
+                } else {
+                    user.setSex(false);
+                }
+            }
+        });
+
         postMess();
     }
 
@@ -64,7 +82,7 @@ public class EditActivity extends Activity{
         params.put("username", user.getUsername());
         params.put("hobby", user.getHobby());
         params.put("user_sign", user.getUserSign());
-
+        params.put("sex", user.getSex());
 
         HttpClient.post(this, HttpUrl.POST_USER_INFO, params, new BaseJsonHttpResponseHandler(this) {
             @Override

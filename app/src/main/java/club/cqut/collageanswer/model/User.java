@@ -13,7 +13,7 @@ import java.util.Date;
  * 用户实体
  * Created by fenghao on 2015/6/28.
  */
-@JsonIgnoreProperties({"name", "created_at", "updated_at", "enable", "remark", "organization_id", "parent_id", "society_id"})
+@JsonIgnoreProperties({"name", "created_at", "updated_at", "enable", "remark", "organization_id", "parent_id", "society_id", "fellow_id"})
 @DatabaseTable(tableName = "users")
 public class User implements Serializable {
 
@@ -31,7 +31,7 @@ public class User implements Serializable {
     public static final String COLUMN_HOBBY = "hobby";//兴趣爱好
     public static final String COLUMN_HEAD_IMAGE = "head_image";
     public static final String COLUMN_SCHOOL_EMAIL = "school_email";
-    public static final String COLUMN_FELLOW = "fellow";//老乡会
+    public static final String COLUMN_FELLOW = "fellow_name";//老乡会
     public static final String COLUMN_CLASS = "class";
     public static final String COLUMN_DEFAULT_ORG = "default_org";//默认组织身份
     public static final String COLUMN_MAJOR = "major";//专业
@@ -75,7 +75,7 @@ public class User implements Serializable {
     @JsonProperty("school_image")
     private String schoolEmail;
     @DatabaseField(columnName = COLUMN_FELLOW)
-    @JsonProperty("fellow_id")
+    @JsonProperty("fellow_name")
     private String fellow;
     @DatabaseField(columnName = COLUMN_CLASS)
     @JsonProperty("clazz")
