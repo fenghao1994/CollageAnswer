@@ -23,7 +23,7 @@ import club.cqut.collageanswer.R;
 public class HeadBackView extends RelativeLayout {
 
     @ViewById
-    protected TextView textView_title;
+    protected TextView textView_title, right_text;
 
     @ViewById(R.id.imageView_left)
     protected ImageView leftButton;
@@ -50,6 +50,10 @@ public class HeadBackView extends RelativeLayout {
 
     public ImageView getRightButton() {
         return rightButton;
+    }
+
+    public TextView getRightText(){
+        return right_text;
     }
 
     /**
@@ -104,5 +108,13 @@ public class HeadBackView extends RelativeLayout {
     @Click(R.id.view_left_zone)
     protected void backClick(){
         ((Activity)context).finish();
+    }
+
+    public void setRightTextContent(CharSequence text){
+        right_text.setText(text);
+    }
+
+    public void showRightText(){
+        right_text.setVisibility(View.VISIBLE);
     }
 }
