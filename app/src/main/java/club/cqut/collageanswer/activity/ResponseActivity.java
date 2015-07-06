@@ -67,6 +67,8 @@ public class ResponseActivity extends Activity {
         params = new RequestParams();
 
         if (userInfo.realName().get() != null && !userInfo.realName().get().equals("")){
+            username.setText(userInfo.name().get());
+            real_name.setText(userInfo.realName().get());
             layout_role.setVisibility(View.VISIBLE);
         }else{
             layout_role.setVisibility(View.GONE);

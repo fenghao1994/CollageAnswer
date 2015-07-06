@@ -158,6 +158,10 @@ public class SearchQuestionActivity extends Activity{
      */
     @Click(R.id.search_text)
     protected void clickSearchText(){
+        if( adapter != null){
+            adapter.list.clear();
+            adapter.notifyDataSetChanged();
+        }
         if(search_question.getText().length() == 0){
             Toast.makeText(this, "请输入要搜索的关键字", Toast.LENGTH_LONG).show();
             return;

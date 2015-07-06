@@ -90,7 +90,7 @@ public class AllAnswerActivity extends Activity {
 //        headback.showRightButton();
 //        headback.setImageViewRightIconRes(R.mipmap.bootstrap_1);
         headback.showRightText();
-        headback.setRightTextContent("回答");
+        headback.setRightTextContent("我要回答");
         headback.getRightText().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

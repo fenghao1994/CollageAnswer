@@ -109,6 +109,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:background="#E9967A"
+                android:textColor="#ffffff"
                 android:singleLine="true"
                 />
         </LinearLayout>
@@ -117,8 +118,9 @@
             android:id="@+id/show_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="10sp"
             android:text="2014:05:25"
-            android:gravity="right|center_vertical"
+            android:gravity="right|bottom"
             />
     </LinearLayout>
 

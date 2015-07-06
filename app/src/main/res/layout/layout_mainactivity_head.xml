@@ -34,7 +34,7 @@
                 android:cursorVisible="true"
                 android:textCursorDrawable="@color/black"
                 android:background="@null"
-                android:hint="搜索答案"
+                android:hint="搜索问题"
                 android:gravity="center"/>
 
             <ImageView

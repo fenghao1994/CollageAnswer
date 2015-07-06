@@ -14,29 +14,30 @@
         android:orientation="horizontal"
         android:layout_gravity="center_vertical"
         >
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="center_vertical"
-        android:paddingTop="10dp"
-        >
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/fast_answer"
-        android:background="#ffffff"
-        android:hint="点击输入你的答案"
-        />
-    </LinearLayout>
-    <TextView
-        android:id="@+id/commit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="提交"
-        android:layout_marginRight="7dp"
-        android:layout_gravity="center_vertical"
-        />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:paddingTop="10dp"
+            >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fast_answer"
+            android:background="#ffffff"
+            android:hint="点击输入你的答案"
+            />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/commit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="提交"
+            android:layout_marginRight="7dp"
+            android:paddingTop="10dp"
+            android:layout_gravity="center_vertical"
+            />
     </LinearLayout>
 
     <LinearLayout
