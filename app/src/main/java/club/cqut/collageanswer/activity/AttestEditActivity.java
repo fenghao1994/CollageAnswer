@@ -130,7 +130,7 @@ public class AttestEditActivity extends Activity {
      *  跳转到认证选择
      */
     public void goSelection(){
-        Intent intent = new Intent(this, AttestActivity_.class);
+        Intent intent = new Intent(this, EmailAttestActivity_.class);
         startActivity(intent);
     }
 }

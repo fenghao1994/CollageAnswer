@@ -70,6 +70,8 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
     @ViewById
     protected ImageView img_question, img_recommend, img_add_question, img_rank, img_mine;
 
+    User user;
+
     @AfterViews
     public void init(){
         layout_question.setOnClickListener(this);
@@ -294,7 +296,4 @@ public class HomeActivity extends FragmentActivity implements View.OnClickListen
         }
         return false;
     }
-
-
-
 }

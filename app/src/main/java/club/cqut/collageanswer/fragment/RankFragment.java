@@ -72,10 +72,6 @@ public class RankFragment extends Fragment{
                 params = new RequestParams();
                 params.put("page", Integer.parseInt(page) + 1);
                 refresh();
-
-                if (Integer.parseInt(page) >= 2) {
-                    Toast.makeText(getActivity(),"排名只有前20",Toast.LENGTH_SHORT).show();
-                }
             }
         });
 

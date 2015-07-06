@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,8 +36,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/blue"
+            android:layout_height="2dp"
+            android:background="#BEBEBE"
             android:layout_marginTop="10dp"
             android:layout_marginRight="150dp"></LinearLayout>
 
@@ -45,14 +46,15 @@
             android:layout_height="wrap_content"
             android:id="@+id/question_content"
             android:layout_marginTop="10dp"
+            android:background="#C1FFC1"
             android:text="11111111111111111111111111111111111111111111111"
             android:textSize="20dp"
             />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/blue"
+            android:layout_height="2dp"
+            android:background="#BEBEBE"
             android:layout_marginTop="10dp"
             ></LinearLayout>
 

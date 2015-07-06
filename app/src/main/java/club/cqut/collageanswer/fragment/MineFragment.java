@@ -1,8 +1,10 @@
 package club.cqut.collageanswer.fragment;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,6 +24,7 @@ import club.cqut.collageanswer.R;
 import club.cqut.collageanswer.activity.AttestActivity_;
 import club.cqut.collageanswer.activity.AttestEditActivity_;
 import club.cqut.collageanswer.activity.EditActivity_;
+import club.cqut.collageanswer.activity.EmailAttestActivity_;
 import club.cqut.collageanswer.activity.HomeActivity_;
 import club.cqut.collageanswer.activity.LoginActivity_;
 import club.cqut.collageanswer.activity.MyAnswerActivity_;
@@ -49,6 +52,10 @@ public class MineFragment extends Fragment {
     protected HeadBackView view_head;
     @ViewById
     protected TextView my_info_name, my_info_sex, email, sinal, real_name, student_no, fellow, hobby;
+    @ViewById
+    protected LinearLayout my_question, my_answer;
+    @ViewById
+    protected ImageView go_attest;
 
     @Pref
     protected UserInfo_ userInfo;
@@ -57,15 +64,29 @@ public class MineFragment extends Fragment {
     @AfterViews
     protected void init(){
         getCurrentUser();
+
+        /*my_answer.setOnHoverListener(new View.OnHoverListener() {
+            @Override
+            public boolean onHover(View v, MotionEvent event) {
+                my_answer.setBackgroundColor(Color.LTGRAY);
+                return true;
+            }
+        });*/
+//        my_answer.setBackgroundColor(Color.WHITE);
+//        my_question.setBackgroundColor(Color.WHITE);
     }
 
     @Click(R.id.go_attest)
     protected void goAttestEdit(){
-        if (userInfo.realName().get() != null && !userInfo.realName().get().equals("")
-                && userInfo.stuNumber().get() != null && !userInfo.stuNumber().equals("") ){
-            Intent intent = new Intent(getActivity(), AttestActivity_.class);
+
+        if(userInfo.approve().get() != null && !userInfo.approve().get().equals("0")){
+
+        }else if (userInfo.realName().get() != null && !userInfo.realName().get().equals("")
+                && userInfo.stuNumber().get() != null && !userInfo.stuNumber().equals("")
+                ){
+            Intent intent = new Intent(getActivity(), EmailAttestActivity_.class);
             startActivity(intent);
-        }else{
+        } else {
             Intent intent = new Intent(getActivity(), AttestEditActivity_.class);
             startActivity(intent);
         }
@@ -73,19 +94,15 @@ public class MineFragment extends Fragment {
 
     @Click(R.id.my_question)
     protected void goMyQuestion(){
+//        my_question.setBackgroundColor(Color.LTGRAY);
         Intent intent = new Intent(getActivity(), MyQuestionActivity_.class);
         startActivity(intent);
     }
 
     @ Click(R.id.my_answer)
     protected void goMyAnswer(){
+//        my_answer.setBackgroundColor(Color.LTGRAY);
         Intent intent = new Intent(getActivity(), MyAnswerActivity_.class);
-        startActivity(intent);
-    }
-
-    @Click(R.id.my_friends)
-    protected void goMyFriends(){
-        Intent intent = new Intent(getActivity(), MyFocusActivity_.class);
         startActivity(intent);
     }
 
@@ -192,6 +209,11 @@ public class MineFragment extends Fragment {
                     hobby.setText(user.getHobby());
                 }
 
+                if(user.getApprove().toString().equals("1")){
+                    go_attest.setImageResource(R.mipmap.yes_v);
+                } else {
+                    go_attest.setImageResource(R.mipmap.no_v);
+                }
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {

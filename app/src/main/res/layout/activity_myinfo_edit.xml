@@ -137,13 +137,4 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/btn_login"
-        android:id="@+id/save"
-        android:layout_margin="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
 </RelativeLayout>

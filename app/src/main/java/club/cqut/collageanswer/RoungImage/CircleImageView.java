@@ -40,7 +40,7 @@ public class CircleImageView extends ImageView {
 
     //边框的默认宽度和颜色
     private static final int DEFAULT_BORDER_WIDTH = 0;
-    private static final int DEFAULT_BORDER_COLOR = Color.BLACK;
+    private static final int DEFAULT_BORDER_COLOR = Color.LTGRAY;
 
     //矩形框
     private final RectF mDrawableRect = new RectF();

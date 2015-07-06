@@ -2,16 +2,19 @@ package club.cqut.collageanswer.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.RequestParams;
 
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.sharedpreferences.Pref;
@@ -47,42 +50,43 @@ public class EditActivity extends Activity{
     protected UserInfo_ userInfo;
 
     protected RequestParams params = null;
-    User user;
+    private User user;
+    TextView textView;
 
     @AfterViews
     protected void init(){
-        view_head.setTitle("个人信息编辑");
+
         getCurrentUser();
-    }
 
-    @Click(R.id.save)
-    protected void save(){
-        //修改信息
-        user.setUsername(name.getText().toString());
-        user.setHobby(hobby.getText().toString());
-        user.setUserSign(sinal.getText().toString());
+        params = new RequestParams();
 
-        sex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        view_head.setTitle("个人信息编辑");
+        view_head.showRightText();
+
+        textView = view_head.getRightText();
+        textView.setText("提交");
+        textView.setTextColor(Color.WHITE);
+        textView.setTextSize(20.0f);
+
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(checkedId == male.getId()){
-                    user.setSex(true);
-                } else {
-                    user.setSex(false);
-                }
+            public void onClick(View v) {
+                postMess();
             }
         });
-
-        postMess();
     }
 
+
     public void postMess(){
-        params = new RequestParams();
+        if (male.isChecked()) {
+            params.put("sex", 1);
+        } else {
+            params.put("sex", 0);
+        }
         params.put("user_id", userInfo.id().get());
-        params.put("username", user.getUsername());
-        params.put("hobby", user.getHobby());
-        params.put("user_sign", user.getUserSign());
-        params.put("sex", user.getSex());
+        params.put("username", name.getText());
+        params.put("hobby", hobby.getText());
+        params.put("user_sign", sinal.getText());
 
         HttpClient.post(this, HttpUrl.POST_USER_INFO, params, new BaseJsonHttpResponseHandler(this) {
             @Override
@@ -96,7 +100,6 @@ public class EditActivity extends Activity{
             }
         });
     }
-
 
     /**
      * 得到当前用户的信息
@@ -129,7 +132,8 @@ public class EditActivity extends Activity{
                 }
                 userInfo.edit().id().put(user.getId()).name().put(user.getUsername()).email().put(user.getEmail()).token().put(user.getToken()).apply();
 
-                Log.w("000", name.getText().toString());
+                getData(user);
+                Toast.makeText(getApplication(), user.getSex() + "", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -144,6 +148,24 @@ public class EditActivity extends Activity{
      */
     public void goMine(){
         Intent intent = new Intent(this,HomeActivity_.class);
-        startActivity(intent.putExtra("mine",4));
+        startActivity(intent.putExtra("mine", 4));
+    }
+
+    /**
+     * 设置当前信息
+     * @param user
+     */
+    public void getData(User user){
+        name.setText(user.getUsername());
+        hobby.setText(user.getHobby());
+        sinal.setText(user.getUserSign());
+        if (user.getSex()){
+            sex.clearCheck();
+            sex.check(male.getId());
+        } else {
+            sex.clearCheck();
+            sex.check(female.getId());
+        }
+
     }
 }

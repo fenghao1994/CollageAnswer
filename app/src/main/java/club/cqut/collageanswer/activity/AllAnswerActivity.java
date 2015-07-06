@@ -73,6 +73,7 @@ public class AllAnswerActivity extends Activity {
     public RequestParams params = null;
     public AnswerItemAdapter adapter;
     public String page = "1";//当前的页数
+    InputMethodManager imm;
 
     Question question;
 
@@ -85,6 +86,9 @@ public class AllAnswerActivity extends Activity {
         question_label.setText(label);
         question_title.setText(question.getTitle());
         question_content.setText(question.getContent());
+
+        imm = (InputMethodManager)this.getSystemService(INPUT_METHOD_SERVICE);
+
         firstIn();
         initListView();
 //        headback.showRightButton();
@@ -265,6 +269,9 @@ public class AllAnswerActivity extends Activity {
                 fast_answer.setText("");
                 fast_answer.clearFocus();
                 getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                if (imm.isActive())  //一直是true
+                    imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,
+                            InputMethodManager.HIDE_NOT_ALWAYS);
             }
 
             @Override

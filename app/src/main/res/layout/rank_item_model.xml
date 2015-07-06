@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/sort_bg"
-                android:src="@mipmap/rank_bg"/>
+                android:src="@mipmap/rank"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -43,24 +43,34 @@
             android:id="@+id/rank_cover"
             android:src="@mipmap/bootstrap_2"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/rank_name"
-            android:paddingTop="10dp"
-            android:layout_marginLeft="30dp"
-            android:textSize="20dp"
-            android:textColor="@color/blue"
-            android:text="11111"/>
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/rank_sex"
-            android:paddingTop="10dp"
-            android:layout_marginLeft="30dp"
-            android:textSize="20dp"
-            android:text="男"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/rank_name"
+                android:paddingTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:textSize="20dp"
+                android:textColor="@color/blue"
+                android:text="11111"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/rank_sex"
+                android:paddingTop="10dp"
+                android:paddingLeft="50dp"
+                android:textSize="20dp"
+                android:text="男"/>
+
+        </LinearLayout>
         
     </LinearLayout>
         
