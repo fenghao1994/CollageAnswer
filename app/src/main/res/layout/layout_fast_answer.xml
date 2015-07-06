@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="55dp"
-    android:orientation="vertical"
+    android:layout_height="70dp"
     android:background="#DCDCDC"
+    android:orientation="vertical"
+
     >
     <!--快速回答区域-->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        >
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_gravity="center_vertical"
+        android:paddingTop="10dp"
         >
-    <view
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        class="com.rengwuxian.materialedittext.MaterialEditText"
         android:id="@+id/fast_answer"
-        style="@style/input"
-        app:met_hideUnderline="true"
-        app:met_floatingLabel="normal"
-        app:met_floatingLabelText="点击输入你的答案"
+        android:background="#ffffff"
         android:hint="点击输入你的答案"
         />
     </LinearLayout>
@@ -69,6 +68,5 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </RadioGroup>
-
     </LinearLayout>
 </LinearLayout>

@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.RequestParams;
@@ -47,17 +48,17 @@ public class ResponseActivity extends Activity {
 
     RequestParams params;
     Question question = null;
-    ImageView imageView;
+    TextView textView;
 
     @AfterViews
     public void init(){
         Intent intent = getIntent();
         question = (Question) intent.getSerializableExtra("question");
         view_head.setTitle("我来回答");
-        view_head.showRightButton();
-        imageView = view_head.getRightButton();
-        imageView.setImageResource(R.mipmap.bootstrap_1);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        view_head.showRightText();
+        textView = view_head.getRightText();
+        textView.setText("提交");
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clickCommit();

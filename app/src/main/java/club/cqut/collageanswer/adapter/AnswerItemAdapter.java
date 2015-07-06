@@ -18,6 +18,7 @@ import java.util.List;
 
 import club.cqut.collageanswer.R;
 import club.cqut.collageanswer.model.Answer;
+import club.cqut.collageanswer.util.comp.DateUtil;
 
 /**
  * 答案的适配器
@@ -30,6 +31,7 @@ public class AnswerItemAdapter extends BaseAdapter{
         TextView priseNum;
         TextView roleName;
         TextView answerContent;
+        TextView showTime;
     }
 
     private Context context;
@@ -94,15 +96,17 @@ public class AnswerItemAdapter extends BaseAdapter{
             holder.priseNum = (TextView) convertView.findViewById(R.id.prise_num);
             holder.roleName = (TextView) convertView.findViewById(R.id.role_name);
             holder.answerContent = (TextView) convertView.findViewById(R.id.answer_content);
+            holder.showTime = (TextView) convertView.findViewById(R.id.show_time);
             convertView.setTag(holder);
         }else {
             holder = (ViewHolder) convertView.getTag();
         }
-        //imageLoader加载图像
+
         holder.priseNum.setText(list.get(position).getPriseNum() + "");
         holder.roleName.setText(list.get(position).getUserRole());
         holder.answerContent.setText(list.get(position).getContext());
-
+        holder.showTime.setText(DateUtil.formatSimple(list.get(position).getShowTime()));
+        //imageLoader加载图像
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(context));
         imageLoader.displayImage(list.get(position).getHeadImage(), holder.headImage, options);

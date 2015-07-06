@@ -2,6 +2,11 @@ package club.cqut.collageanswer.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.BackgroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +23,7 @@ import java.util.List;
 
 import club.cqut.collageanswer.R;
 import club.cqut.collageanswer.model.Question;
+import club.cqut.collageanswer.util.comp.DateUtil;
 
 
 /**
@@ -32,6 +38,7 @@ public class QuestionItemAdapter extends BaseAdapter{
         TextView readNum;
         TextView questionTitle;
         TextView questionLabel;
+        TextView showTime;
     }
     private Context context;
     public List<Question> list = new ArrayList<>();
@@ -103,29 +110,37 @@ public class QuestionItemAdapter extends BaseAdapter{
             holder.readNum = (TextView) convertView.findViewById(R.id.read_num);
             holder.questionTitle = (TextView) convertView.findViewById(R.id.question_title);
             holder.questionLabel = (TextView) convertView.findViewById(R.id.question_label);
+            holder.showTime = (TextView) convertView.findViewById(R.id.show_time);
             convertView.setTag(holder);
         }else {
             holder = (ViewHolder) convertView.getTag();
         }
-        //imageLoader加载图像
+
         holder.username.setText(list.get(position).getUserName());
         holder.readNum.setText(list.get(position).getReadNum());
         holder.questionTitle.setText(list.get(position).getTitle());
-
-
-
+        holder.showTime.setText(DateUtil.formatSimple(list.get(position).getTime()));
+        holder.questionLabel.setText("");
         //处理标签
-        String[] split = {};
-        String str = "";
         if( list.get(position).getLabel() != null && !list.get(position).getLabel().equals("")){
-            split = list.get(position).getLabel().split(",");
+            String[] split = list.get(position).getLabel().split(",");
             for (int i = 0 ; i < split.length ; i++){
-                str += split[i] + "  ";
+                String str = split[i] + "  ";
+                int bstart = str.lastIndexOf("  ");
+                int bend = bstart + "  ".length();
+                SpannableStringBuilder style=new SpannableStringBuilder(str);
+                style.setSpan(new BackgroundColorSpan(Color.rgb(238,238,238)),bstart,bend, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                holder.questionLabel.append(style);
             }
+        }else{
+            holder.questionLabel.setText("");
         }
-        holder.questionLabel.setText(str);
 
 
+
+
+
+        //imageLoader加载图像
         ImageLoader imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(context));
         imageLoader.displayImage(list.get(position).getHeadImage(), holder.headImage, options);

@@ -4,12 +4,13 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 答案
  * Created by fenghao on 2015/6/28.
  */
-@JsonIgnoreProperties({"created_at", "updated_at"})
+@JsonIgnoreProperties({"updated_at"})
 public class Answer implements Serializable{
 
     private int id;//答案id
@@ -27,6 +28,8 @@ public class Answer implements Serializable{
     private String headImage;//回答人头像
     @JsonProperty("user_sign")
     private String userSign;//回答人的个性签名
+    @JsonProperty("created_at")
+    private Date showTime;
     public int getId() {
         return id;
     }
@@ -89,5 +92,13 @@ public class Answer implements Serializable{
 
     public void setUserSign(String userSign) {
         this.userSign = userSign;
+    }
+
+    public Date getShowTime() {
+        return showTime;
+    }
+
+    public void setShowTime(Date showTime) {
+        this.showTime = showTime;
     }
 }

@@ -74,7 +74,7 @@ public class NoticeItemAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         holder.title.setText(list.get(position).getTitle());
-        holder.content.setText(list.get(position).getContent());
+        holder.content.setText("\u3000\u3000" + list.get(position).getContent());
         return convertView;
     }
 }

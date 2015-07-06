@@ -16,15 +16,8 @@
         android:text="通知title"
         android:gravity="center_horizontal"
         android:textSize="20sp"
+        android:textStyle="bold"
         />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E0FFFF"
-            >
-
-        </LinearLayout>
 
     <TextView
         android:layout_marginTop="10dp"
@@ -34,7 +27,8 @@
         android:text="通知content"
         android:maxLines="4"
         android:ellipsize="end"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:lineSpacingMultiplier="1.5"
         />
     </LinearLayout>
 

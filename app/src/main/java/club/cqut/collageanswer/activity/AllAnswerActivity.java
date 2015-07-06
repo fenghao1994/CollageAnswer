@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -56,7 +57,7 @@ public class AllAnswerActivity extends Activity {
     @ViewById
     protected PullToRefreshListView listview;
     @ViewById
-    protected MaterialEditText fast_answer;
+    protected EditText fast_answer;
     @ViewById
     protected TextView commit;
     @ViewById
@@ -86,9 +87,11 @@ public class AllAnswerActivity extends Activity {
         question_content.setText(question.getContent());
         firstIn();
         initListView();
-        headback.showRightButton();
-        headback.setImageViewRightIconRes(R.mipmap.bootstrap_1);
-        headback.getRightButton().setOnClickListener(new View.OnClickListener() {
+//        headback.showRightButton();
+//        headback.setImageViewRightIconRes(R.mipmap.bootstrap_1);
+        headback.showRightText();
+        headback.setRightTextContent("回答");
+        headback.getRightText().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent t = new Intent(getApplication(), ResponseActivity_.class);

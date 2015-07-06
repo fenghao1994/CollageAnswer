@@ -4,12 +4,13 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 问题实体
  * Created by fenghao on 2015/6/28.
  */
-@JsonIgnoreProperties({"created_at", "updated_at", "avatar_file_name","avatar_content_type","avatar_file_size", "avatar_updated_at"})
+@JsonIgnoreProperties({"updated_at", "avatar_file_name","avatar_content_type","avatar_file_size", "avatar_updated_at"})
 public class Question implements Serializable{
 
 
@@ -28,6 +29,8 @@ public class Question implements Serializable{
     private String readNum; //阅读量
     @JsonProperty("owner_id")
     private int ownerId;//上一级id ，为0表示没有追问
+    @JsonProperty("created_at")
+    private Date time;
 
     public int getId() {
         return id;
@@ -99,6 +102,14 @@ public class Question implements Serializable{
 
     public void setHeadImage(String headImage) {
         this.headImage = headImage;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
     }
 
 //    public int getAnswerNum() {
