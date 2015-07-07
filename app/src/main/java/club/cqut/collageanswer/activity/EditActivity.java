@@ -133,7 +133,6 @@ public class EditActivity extends Activity{
                 userInfo.edit().id().put(user.getId()).name().put(user.getUsername()).email().put(user.getEmail()).token().put(user.getToken()).apply();
 
                 getData(user);
-                Toast.makeText(getApplication(), user.getSex() + "", Toast.LENGTH_LONG).show();
             }
 
             @Override
