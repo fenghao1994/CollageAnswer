@@ -45,11 +45,4 @@
         android:hint="请输入您的学号"
         android:textSize="20dp"/>
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/btn_login"
-        android:id="@+id/save"
-        android:layout_margin="20dp"/>
-
 </LinearLayout>

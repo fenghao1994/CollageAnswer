@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.RequestParams;
@@ -52,16 +53,16 @@ public class AddQuestionActivity extends Activity{
     @Pref
     protected UserInfo_ userInfo;
 
-    ImageView imageView;
+    TextView textView;
 
 
     @AfterViews
     protected void init(){
         view_head.setTitle("描述你的问题");
-        view_head.showRightButton();
-        view_head.setImageViewRightIconRes(R.mipmap.bootstrap_1);
-        imageView = view_head.getRightButton();
-        imageView.setOnClickListener(new View.OnClickListener() {
+        textView = view_head.getRightText();
+        view_head.showRightText();
+        textView.setText("下一步");
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clickCommit();

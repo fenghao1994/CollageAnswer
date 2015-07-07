@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.RequestParams;
@@ -38,7 +39,7 @@ public class QuestionCommit extends Activity {
     @Pref
     protected UserInfo_ userInfo;
 
-    public ImageView commit;
+    public TextView commit;
     public String label = "";
     String questionTitle;
     String questionContent;
@@ -49,9 +50,9 @@ public class QuestionCommit extends Activity {
         questionTitle = intent.getStringExtra("title");
         questionContent = intent.getStringExtra("content");
         backview.setTitle("为你的问题添加标题");
-        backview.showRightButton();
-        backview.setImageViewRightIconRes(R.mipmap.bootstrap_1);
-        commit = backview.getRightButton();
+        backview.showRightText();
+        commit = backview.getRightText();
+        commit.setText("提交");
         commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

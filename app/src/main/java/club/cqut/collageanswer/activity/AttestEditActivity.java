@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.RequestParams;
@@ -34,6 +36,8 @@ public class AttestEditActivity extends Activity {
     @ViewById
     protected EditText real_name, student_no;
 
+    TextView textView;
+
     @Pref
     protected UserInfo_ userInfo;
 
@@ -42,6 +46,10 @@ public class AttestEditActivity extends Activity {
     @AfterViews
     protected void init(){
         view_head.setTitle("认证编辑");
+        view_head.showRightText();
+
+        textView = view_head.getRightText();
+        textView.setText("提交");
 
         real_name.addTextChangedListener(new TextWatcher() {
             @Override
@@ -73,11 +81,13 @@ public class AttestEditActivity extends Activity {
 
             }
         });
-    }
 
-    @Click(R.id.save)
-    protected void save(){
-        checkMess();
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkMess();
+            }
+        });
     }
 
     /**

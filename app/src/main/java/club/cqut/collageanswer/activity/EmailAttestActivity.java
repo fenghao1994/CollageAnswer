@@ -8,8 +8,10 @@ import android.preference.DialogPreference;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.RequestParams;
@@ -44,15 +46,21 @@ public class EmailAttestActivity extends Activity{
     protected UserInfo_ userInfo;
 
     protected RequestParams params = null;
+    private TextView textView;
 
     @AfterViews
     public void init(){
         view_head.setTitle("校园邮箱认证");
-    }
+        textView = view_head.getRightText();
+        view_head.showRightText();
+        textView.setText("提交");
 
-    @Click(R.id.email_ok)
-    protected void save(){
-        checkInput();
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkInput();
+            }
+        });
     }
 
     /**
