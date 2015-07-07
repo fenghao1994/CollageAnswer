@@ -4,4 +4,5 @@
     <color name="black">#000000</color>
     <color name="bottom_blue">#03bef4</color>
     <color name="bottom_black">#cccccc</color>
+    <color name="linearyout_gray">#d0d0d0</color>
 </resources>

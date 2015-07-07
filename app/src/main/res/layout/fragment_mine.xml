@@ -282,6 +282,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:id="@+id/my_question"
+                android:background="@drawable/linearlayout_click"
                 android:layout_marginTop="20dp">
 
                 <TextView
@@ -312,6 +313,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:id="@+id/my_answer"
+                android:background="@drawable/linearlayout_click"
                 android:layout_marginTop="10dp">
 
                 <TextView
@@ -341,7 +343,7 @@
                 android:id="@+id/load_out"
                 android:layout_marginLeft="60dp"
                 android:layout_marginRight="40dp"
-                android:background="@drawable/quit"/>
+                android:background="@drawable/btn_quit"/>
 
         </LinearLayout>
     </ScrollView>
