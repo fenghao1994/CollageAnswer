@@ -20,8 +20,9 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:orientation="horizontal"
+        android:background="#FFFFFF"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp">
 
@@ -72,25 +73,24 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#BEBEBE"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"></LinearLayout>
-
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:orientation="vertical"
+         android:background="#FFFFFF">
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:background="#FFFFFF"
+        android:layout_marginTop="30dp">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="邮箱"
             android:textSize="20dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:paddingLeft="60dp"
             />
         <TextView
@@ -100,23 +100,33 @@
             android:gravity="left"
             android:paddingLeft="20dp"
             android:textSize="20dp"
-            android:layout_weight="1"
+            android:layout_weight="2.5"
             android:id="@+id/email"
             />
     </LinearLayout>
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="20dp"
+        android:background="#DDDDDD"></LinearLayout>
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="个性签名"
             android:textSize="20dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:paddingLeft="60dp"
             />
         <TextView
@@ -127,18 +137,18 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:textSize="20dp"
-            android:layout_weight="1"
+            android:layout_weight="2.5"
             android:id="@+id/sinal"
             />
     </LinearLayout>
+     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#BEBEBE"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"></LinearLayout>
+     <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="#FFFFFF"
+      android:orientation="vertical"
+      android:layout_marginTop="20dp">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -151,7 +161,7 @@
             android:layout_height="wrap_content"
             android:text="真实姓名"
             android:textSize="20dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:paddingLeft="60dp"/>
         <TextView
             android:layout_width="0dp"
@@ -160,10 +170,19 @@
             android:gravity="left"
             android:paddingLeft="20dp"
             android:textSize="20dp"
-            android:layout_weight="1"
+            android:layout_weight="2.5"
             android:id="@+id/real_name"
             />
     </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="1dp"
+             android:orientation="horizontal"
+             android:layout_marginTop="20dp"
+             android:layout_marginLeft="50dp"
+             android:layout_marginRight="20dp"
+             android:background="#DDDDDD"></LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -176,7 +195,7 @@
             android:layout_height="wrap_content"
             android:text="学号"
             android:textSize="20dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             android:paddingLeft="60dp"/>
         <TextView
             android:layout_width="0dp"
@@ -185,18 +204,25 @@
             android:gravity="left"
             android:paddingLeft="20dp"
             android:textSize="20dp"
-            android:layout_weight="1"
+            android:layout_weight="2.5"
             android:id="@+id/student_no"
             />
     </LinearLayout>
 
-
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="1dp"
+             android:orientation="horizontal"
+             android:layout_marginTop="20dp"
+             android:layout_marginLeft="50dp"
+             android:layout_marginRight="20dp"
+             android:background="#DDDDDD"></LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="2"
+        android:weightSum="4"
         android:layout_marginTop="20dp">
 
         <TextView
@@ -205,7 +231,7 @@
             android:text="老乡会"
             android:textSize="20dp"
             android:paddingLeft="60dp"
-            android:layout_weight="1"
+            android:layout_weight="1.5"
             />
         <TextView
             android:layout_width="0dp"
@@ -214,16 +240,25 @@
             android:gravity="left"
             android:paddingLeft="20dp"
             android:textSize="20dp"
-            android:layout_weight="1"
+            android:layout_weight="2.5"
             android:id="@+id/fellow"
             />
     </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="1dp"
+             android:orientation="horizontal"
+             android:layout_marginTop="20dp"
+             android:layout_marginLeft="50dp"
+             android:layout_marginRight="20dp"
+             android:background="#DDDDDD"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2"
+                android:weightSum="4"
                 android:visibility="gone"
                 android:layout_marginTop="20dp">
 
@@ -233,7 +268,7 @@
                     android:text="协会"
                     android:textSize="20dp"
                     android:paddingLeft="60dp"
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     />
                 <TextView
                     android:layout_width="0dp"
@@ -242,7 +277,7 @@
                     android:gravity="left"
                     android:paddingLeft="20dp"
                     android:textSize="20dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2.5"
                     />
             </LinearLayout>
 
@@ -250,7 +285,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2"
+                android:weightSum="4"
                 android:layout_marginTop="20dp">
 
                 <TextView
@@ -259,7 +294,7 @@
                     android:text="兴趣爱好"
                     android:paddingLeft="60dp"
                     android:textSize="20dp"
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     />
                 <TextView
                     android:layout_width="0dp"
@@ -269,16 +304,25 @@
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:textSize="20dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2.5"
                     android:id="@+id/hobby"
                     />
             </LinearLayout>
+
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="1dp"
+             android:orientation="horizontal"
+             android:layout_marginTop="20dp"
+             android:layout_marginLeft="50dp"
+             android:layout_marginRight="20dp"
+             android:background="#DDDDDD"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2"
+                android:weightSum="4"
                 android:clickable="true"
                 android:focusable="true"
                 android:id="@+id/my_question"
@@ -292,24 +336,33 @@
                     android:paddingLeft="60dp"
                     android:layout_gravity="center_vertical"
                     android:textSize="20dp"
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     />
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="40dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2.5"
                     android:layout_gravity="right"
                     android:paddingLeft="120dp"
                     android:src="@mipmap/go"/>
 
             </LinearLayout>
 
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="1dp"
+             android:orientation="horizontal"
+             android:layout_marginTop="20dp"
+             android:layout_marginLeft="50dp"
+             android:layout_marginRight="20dp"
+             android:background="#DDDDDD"></LinearLayout>
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2"
+                android:weightSum="4"
                 android:clickable="true"
                 android:focusable="true"
                 android:id="@+id/my_answer"
@@ -323,13 +376,13 @@
                     android:paddingLeft="60dp"
                     android:layout_gravity="center_vertical"
                     android:textSize="20dp"
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     />
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="40dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2.5"
                     android:layout_gravity="right"
                     android:paddingLeft="120dp"
                     android:src="@mipmap/go"/>
@@ -340,11 +393,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="45dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:id="@+id/load_out"
                 android:layout_marginLeft="60dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/btn_quit"/>
+     </LinearLayout>
 
         </LinearLayout>
+
     </ScrollView>
 </LinearLayout>

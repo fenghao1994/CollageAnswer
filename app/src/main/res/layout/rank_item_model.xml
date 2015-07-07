@@ -41,12 +41,17 @@
         <club.cqut.collageanswer.RoungImage.CircleImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="15dp"
             android:id="@+id/rank_cover"
             android:src="@mipmap/bootstrap_2"/>
 
+
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="3">
@@ -57,8 +62,8 @@
                 android:layout_weight="2"
                 android:id="@+id/rank_name"
                 android:paddingTop="10dp"
-                android:layout_marginLeft="40dp"
-                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="16dp"
                 android:text="11111111111"/>
 
             <TextView
@@ -68,9 +73,22 @@
                 android:id="@+id/rank_sex"
                 android:paddingTop="10dp"
                 android:paddingLeft="20dp"
-                android:textSize="20dp"
+                android:textSize="16dp"
                 android:textColor="@color/blue"
                 android:text="男"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textSize="12dp"
+                android:id="@+id/sign"
+                />
 
         </LinearLayout>
         

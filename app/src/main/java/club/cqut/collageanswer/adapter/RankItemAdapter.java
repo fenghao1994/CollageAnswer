@@ -31,6 +31,7 @@ public class RankItemAdapter extends BaseAdapter {
         TextView sortNum;
         TextView username;
         TextView sex;
+        TextView sign;
     }
 
     private Context context;
@@ -102,6 +103,7 @@ public class RankItemAdapter extends BaseAdapter {
             holder.sortNum = (TextView) convertView.findViewById(R.id.rank_num);
             holder.username = (TextView) convertView.findViewById(R.id.rank_name);
             holder.sex = (TextView) convertView.findViewById(R.id.rank_sex);
+            holder.sign = (TextView) convertView.findViewById(R.id.sign);
             convertView.setTag(holder);
         }else {
             holder = (ViewHolder) convertView.getTag();
@@ -111,8 +113,13 @@ public class RankItemAdapter extends BaseAdapter {
         imageLoader.init(ImageLoaderConfiguration.createDefault(context));
         imageLoader.displayImage(list.get(position).getHeadImage(), holder.headImage, options);
 
-        holder.sortNum.setText(position + 1+ "");
+        holder.sortNum.setText(position + 1 + "");
         holder.username.setText(list.get(position).getUsername());
+        if(list.get(position).getUserSign() == null || list.get(position).getUserSign().equals("")) {
+            holder.sign.setText("该用户很懒，什么也没留下...");
+        } else {
+            holder.sign.setText(list.get(position).getUserSign());
+        }
 
 //        holder.sex.setText("男");
         if(list.get(position).getSex() == null){
