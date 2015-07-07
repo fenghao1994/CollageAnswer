@@ -35,7 +35,7 @@
             app:met_floatingLabelText="邮箱"
             app:met_floatingLabelTextSize="14sp"
             app:met_minBottomTextLines="1"
-            android:hint="手机号/邮箱"
+            android:hint="邮箱"
             android:singleLine="true" />
     </LinearLayout>
 
