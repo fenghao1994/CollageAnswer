@@ -37,6 +37,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import club.cqut.collageanswer.R;
+import club.cqut.collageanswer.adapter.CityAdapter;
 import club.cqut.collageanswer.customview.HeadBackView;
 import club.cqut.collageanswer.model.ProvinceModel;
 import club.cqut.collageanswer.util.comp.XmlParserHandler;
@@ -44,6 +45,9 @@ import club.cqut.collageanswer.util.http.BaseJsonHttpResponseHandler;
 import club.cqut.collageanswer.util.http.HttpClient;
 import club.cqut.collageanswer.util.http.HttpUrl;
 import club.cqut.collageanswer.util.http.JacksonMapper;
+import kankan.wheel.widget.OnWheelChangedListener;
+import kankan.wheel.widget.WheelView;
+import kankan.wheel.widget.adapters.AbstractWheelTextAdapter;
 
 /**
  * 注册页面
@@ -65,11 +69,12 @@ public class SignUpActivity extends Activity {
     @ViewById
     protected ImageView imageView_signup;
     @ViewById
-    protected Spinner spinner;
+    protected WheelView cities;
 
+    protected ArrayList<String> arrayList;
     protected RequestParams params = null;
     protected String province = "";
-    protected ArrayAdapter adapter;
+    protected CityAdapter adapter;
 
     //密码正确的标志
     boolean flag2 = true;
@@ -260,20 +265,22 @@ public class SignUpActivity extends Activity {
             // 获取解析出来的数据
             provinceList = handler.getDataList();
 
-            ArrayList<String> arrayList = new ArrayList<>();
+            arrayList  = new ArrayList<>();
             for(int i = 0 ; i < provinceList.size() ; i++){
                 arrayList.add(provinceList.get(i).getName());
             }
-            adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, arrayList);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner.setAdapter(adapter);
-            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            //wheel的初始化
+            cities.setVisibleItems(34); // Number of items
+            cities.setWheelBackground(R.drawable.wheel_bg_holo);
+            cities.setWheelForeground(R.drawable.wheel_val_holo);
+            cities.setShadowColor(0xAAEEEEEE, 0xEEEEEE, 0xEEEEEE);
+            cities.setCurrentItem(10);
+            adapter = new CityAdapter(this, arrayList);
+            cities.setViewAdapter(adapter);
+            cities.addChangingListener(new OnWheelChangedListener() {
                 @Override
-                public void onItemSelected(final AdapterView<?> parent, View view, int position, long id) {
-                    province = (String) adapter.getItem(position);
-                }
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
+                public void onChanged(WheelView wheel, int oldValue, int newValue) {
+                    province = arrayList.get(newValue);
                 }
             });
         } catch (IOException e) {

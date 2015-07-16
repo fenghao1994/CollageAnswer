@@ -57,6 +57,7 @@ dependencies {
     }
 
     compile project(':pulltorefresh-library')
+    compile project(':wheel-library')
 //    compile project(':imageloader-library')
 }
 

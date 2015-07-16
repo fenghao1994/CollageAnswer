@@ -11,23 +11,15 @@ move your project to a location where this is not a problem.
 D:\Program Files (x86)\Android_Studio\app\CollageAnswer
           -     -                                      
 
-Ignored Files:
---------------
-The following files were *not* copied into the new Gradle project; you
-should evaluate whether these are still needed in your project and if
-so manually move them:
-
-* LICENSE
-* pom.xml
-
 Moved Files:
 ------------
 Android Gradle projects use a different directory structure than ADT
 Eclipse projects. Here's how the projects were restructured:
 
-* AndroidManifest.xml => library\src\main\AndroidManifest.xml
-* res\ => library\src\main\res\
-* src\ => library\src\main\java\
+* AndroidManifest.xml => wheel-library\src\main\AndroidManifest.xml
+* assets\ => wheel-library\src\main\assets
+* res\ => wheel-library\src\main\res\
+* src\ => wheel-library\src\main\java\
 
 Next Steps:
 -----------

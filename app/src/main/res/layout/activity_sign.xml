@@ -124,14 +124,22 @@
             android:gravity="center"
             />
 
-    <Spinner
+<!--    <Spinner
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         >
 
-    </Spinner>
+    </Spinner>-->
+
+    <kankan.wheel.widget.WheelView
+        android:id="@+id/cities"
+        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        />
 
 
     <ImageView
