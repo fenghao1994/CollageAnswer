@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\Program Files (x86)\Android_Studio\app\CollageAnswer\wheel-library\src\main\assets"/></dataSet><dataSet config="release"><source path="D:\Program Files (x86)\Android_Studio\app\CollageAnswer\wheel-library\src\release\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="D:\Program Files\Android\App\CollageAnswer\wheel-library\src\main\assets"/></dataSet><dataSet config="release"><source path="D:\Program Files\Android\App\CollageAnswer\wheel-library\src\release\assets"/></dataSet></merger>

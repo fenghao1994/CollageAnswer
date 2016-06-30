@@ -19,7 +19,7 @@
 -->
 
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-	<!--<item>
+	<item>
 		<shape android:shape="rectangle">
 			<gradient
 				android:startColor="#333"
@@ -38,5 +38,5 @@
 				android:endColor="#AAA"
 				android:angle="90" />
 		</shape>
-	</item>-->
-</layer-list><!-- From: file:/D:/Program%20Files%20(x86)/Android_Studio/app/CollageAnswer/wheel-library/src/main/res/drawable/wheel_bg.xml --><!-- From: file:/D:/Program%20Files%20(x86)/Android_Studio/app/CollageAnswer/wheel-library/build/intermediates/bundles/debug/res/drawable/wheel_bg.xml -->
+	</item>
+</layer-list><!-- From: file:/D:/Program%20Files/Android/App/CollageAnswer/wheel-library/src/main/res/drawable/wheel_bg.xml --><!-- From: file:/D:/Program%20Files/Android/App/CollageAnswer/wheel-library/build/intermediates/bundles/debug/res/drawable/wheel_bg.xml -->
